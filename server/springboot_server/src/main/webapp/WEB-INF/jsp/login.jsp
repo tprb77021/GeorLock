@@ -78,7 +78,11 @@ font-family: 'Noto Sans KR', sans-serif;
 <body>
 	<div class="login-page">
   <div class="form">
+<<<<<<< HEAD
       <img src="/asset/images/georlocklogo.png">
+=======
+    <img src="/../images/georlocklogo.png">
+>>>>>>> 14962cc6dd89220f89620321af5f6989b0594f2d
     <form class="login-form">
       	<input type="text" placeholder="ID"  name = "userid" class="inputcontrol"/>
       	<input type="password" placeholder="PASSWORD" name = "userpass" class="inputcontrol"/>
