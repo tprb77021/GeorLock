@@ -1,4 +1,4 @@
-package com.springboot.smartvalve;
+package com.springboot.georlock;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
