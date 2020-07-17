@@ -1,9 +1,11 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+
 <title>login</title>
 
 <style type="text/css">
@@ -12,7 +14,7 @@
 body {
  font-family: 'Roboto', sans-serif;
 }
-	
+
 
 .login-page {
   width: 400px;
@@ -26,7 +28,7 @@ body {
   margin: 0 auto 100px;
   padding: 45px;
   text-align: center;
- 
+
 }
 .form img{
 	width: 100%;
@@ -47,7 +49,7 @@ body {
   font-size: 14px;
 }
 .form button {
- 
+
   text-transform: uppercase;
   outline: 0;
   background: #2497F4;;
@@ -70,16 +72,20 @@ margin-bottom: 10px;
 font-family: 'Noto Sans KR', sans-serif;
 }
 
-	
+
 </style>
 </head>
 <body>
 	<div class="login-page">
   <div class="form">
-    <img src="/WEB-INF/images/georlocklogo.png">
+<<<<<<< HEAD
+      <img src="/asset/images/georlocklogo.png">
+=======
+    <img src="/../images/georlocklogo.png">
+>>>>>>> 14962cc6dd89220f89620321af5f6989b0594f2d
     <form class="login-form">
       	<input type="text" placeholder="ID"  name = "userid" class="inputcontrol"/>
-      	<input type="password" placeholder="PASSWORD" name = "userpass" class="inputcontrol"/>   
+      	<input type="password" placeholder="PASSWORD" name = "userpass" class="inputcontrol"/>
       	  <div class="checkbox">
           <label class="checklabel">
             <input type="checkbox" value="remember-me" class="inp_radio">자동 로그인
