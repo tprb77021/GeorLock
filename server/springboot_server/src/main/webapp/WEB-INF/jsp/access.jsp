@@ -1,222 +1,100 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>출입권한설정</title>
-
-
-<style type="text/css">
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto&display=swap');
-body {
-  margin: 0 auto;	
- 
-}
-button {
-  border: 0;
-  background: 0;
-  cursor: pointer;
-}
-button, input, a {
-  outline: none;
-}
-a {
-  text-decoration: none;
-  color: #FFF;
-  font-family: 'Roboto', sans-serif;
-  
-}
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-header{
-	height: 20%;
-	border-bottom: 1px solid #E7E6E6;
-	justify-content: space-between;
-	display: flex;
-	font-family: 'Roboto', sans-serif;
-}
-
-.logo img{
-	padding-top:10px;
-	padding-left:40px;
-	width: 190px;
-	height: 50px;
-	
-}
-
-.logout{
-	margin-right: 12px;
-	font-size: 20px;
-	color: #7F7F7F;
-	margin-top: 25px;
-	margin-right: 30px;
-}
-
-.main{
-	margin-left: 260px;
-	padding-top: 10px;
-	font-family: 'Noto Sans KR', sans-serif;	
-}
-
-.main h1{
-	margin-left:25px;
-	color: #053863;
-}
-
-
-.sidenav {
-  width: 250px;
-  height: 100%;
-  background: #2497F4;
-  position: fixed;
-  text-align: center;
- 
-}
-
-.container aside {
-  margin: 10px;
-}
-.container aside ul li a {
-  padding: 15px 0px;
-  margin: 40px 0px;
-  
-  transition: 0.2s;
-  font-family: 'Noto Sans KR', sans-serif;
-  
-}
-.container aside ul li a:hover {
-  background: #053863;
-}
-.container aside ul li a span {
-  font-size: 20px;
-}
-
-aside a{
-	display: block;
-}
-
-.search{
-	margin: 20px 0px 0px 30px;
-	display: inline-block;
-	
-		
-}
-
-.search input[type="date"]{
-	height: 27px;
-}
-
-.search a{
-	color: #053863;
-}
-
-.search input[type="text"]{
-	width: 250px;
-	height: 27px;
-}
-
-.table{
-margin-top: 30px;
-border: 1px solid #7F7F7F;
-width: 90%;
-text-align: center;
-margin-left: auto; 
-margin-right: auto;
-}
-
-button .modify {
-	background-color:#2497f4;
-	border-radius:8px;
-	border:1px solid #2497f4;
-	color: #ffffff;
-	padding:4px 6px;
-}
-
-button .delete {
-	background-color:red;
-	border-radius:8px;
-	border:1px solid red;
-	color: #ffffff;
-	padding:4px 6px;
-}
-
-
-
-
-
-</style>
-<script src="https://use.fontawesome.com/releases/v5.2.0/js/all.js"></script>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="/asset/css/access.css"/>
+	<title>출입권한설정</title>
 </head>
 <body>
+<%--header--%>
 	<header>
-		<div class="logo">
-			<a href="record.jsp" title="record">	
-	        	<img src="images/georlocklogo.png">
-	        </a>
-	    </div>
-	    <div class="logout">
-	    	<span>Logout</span>
-	    </div>
+		<div class="logoImg">
+			<a href="record" title="record">
+				<img src="/asset/images/georlocklogo.png">
+			</a>
+		</div>
+<%--로그아웃--%>
+		<div class="logout">
+			<a href="logout" title="logout">
+				<span>Logout</span>
+			</a>
+		</div>
 	</header>
 
-	<div class = "container">
-		<aside class="sidenav">
-		 <ul>
-		      <li>
-		        <a href="record.jsp" title="record">
-		          <span>출입기록</span>          
-		        </a>
-		      </li>
-		      <li>
-		        <a href="access.jsp"title="access">
-		          <span>출입권한설정</span>         
-		        </a>
-		      </li> 
-		      <li>
-		        <a href="#" title="request">
-		          <span>출입요청목록</span>         
-		        </a>
-		      </li> 
-		    </ul>
- 		</aside>
-	 <main class="main">
-			<h1>출입권한설정</h1>
-		 <div class="search">			
-			 	<input type = "date"/> ~
-			 	<input type = "date"/>			
-			    <input type="text" class="search_txt" id="" placeholder="Search..."/>		
-			    <a class="search_btn" href="#"><i class="fas fa-search"></i></a>
-		</div>
-		<table class="table">
-		  <tr>
-		    <th>사번</th>
-		    <th>이름</th>
-		    <th>출입가능시간</th>
-		    <th>수정/삭제</th>
-		  </tr>
-		  <tr>
-		  	<td></td>
-		  	<td></td>
-		  	<td></td>
-		  	<td>
-		  		<div class="btn-group">
-		  			<button type="submit">
-		  				<p class="modify">수정</p>
-		  			</button>
-		  			<button type="submit">
-		  				<p class="delete">삭제</p>
-		  			</button>
-		  		</div>
-		  	</td>
-		  </tr>
-		</table>
-	 </main>
+	<div id="main" >
+		<article class="main-item">
+			<p>출입권한설정</p>
+
+<%--검색창--%>
+			<form id="searchForm" action="access" method="get">
+				<div class="search">
+					<input type="text"  name="textSearch" class="search_txt" placeholder="Search..."/>
+				</div>
+			</form>
+
+<%--테이블--%>
+			<table class="table">
+				<colgroup>
+					<col width="20%"/>
+					<col width="20%"/>
+					<col width="40%"/>
+					<col width="20%"/>
+				</colgroup>
+				<tr>
+					<thead>
+					<th>사번</th>
+					<th>이름</th>
+					<th>출입가능시간</th>
+					<th>수정/삭제</th>
+					</thead>
+				</tr>
+				<tr>
+					<td></td>
+					<td></td>
+					<td></td>
+
+<%--수정 삭제--%>
+					<td>
+						<div class="btn-group">
+							<button type="button" id="modity_btn" >
+								<p class="modify">수정</p>
+							</button>
+							<button type="submit" id="delete_btn">
+								<p class="delete">삭제</p>
+							</button>
+						</div>
+					</td>
+				</tr>
+			</table>
+
+<%--페이징--%>
+			<div class="paginationBox">
+				<ul class="pagination">
+					<li class="page-item">
+					</li>
+				</ul>
+			</div>
+		</article>
+
+<%--navside--%>
+		<nav>
+			<div class="nav-item">
+				<ul>
+					<li>
+						<a href="record" title="record">
+							<span>출입기록</span>
+						</a>
+					</li>
+					<li>
+						<a href="access"title="access">
+							<span>출입권한설정</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 	</div>
-  </body>
+</body>
 </html>

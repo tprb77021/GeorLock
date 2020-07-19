@@ -26,4 +26,27 @@ public class LoginController {
         System.out.println("login");
         return "login";
     }
+
+    @RequestMapping("/access")
+    public String access() {
+        System.out.println("access");
+        return "access";
+    }
+
+    @RequestMapping("/record")
+    public String record() {
+        System.out.println("record");
+        return "record";
+    }
+
+
+    @RequestMapping("/logout")
+    public String logout() {
+        System.out.println("logout");
+        return "redirect:/";
+
+    }
+
+
+
 }
