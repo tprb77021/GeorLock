@@ -1,4 +1,4 @@
-package com.springboot.georlock.db;
+package com.springboot.georlock.config;
 
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
@@ -12,24 +12,26 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @Configuration
-@MapperScan(basePackages="com.springboot.georlock.mapper")
+@MapperScan("com.springboot.georlock.mapper")
 @EnableTransactionManagement
-public class DatabaseConfig {
+public class MyBatisConfig {
 
     @Bean
-    //프로젝트의 어디에서나 쓸 수 있도록 bean에 등록
     public SqlSessionFactory sqlSessionFactory(DataSource dataSource) throws Exception {
-        SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
-        sqlSessionFactory.setDataSource((javax.sql.DataSource) dataSource);
-        sqlSessionFactory.setTypeAliasesPackage("com.springboot.georlock.dto");
-        PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-        sqlSessionFactory.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
-        return sqlSessionFactory.getObject(); //factory를 만들어서 bean에 등록
+        final SqlSessionFactoryBean sessionFactory =
+                new SqlSessionFactoryBean();
+        sessionFactory.setDataSource(dataSource);
+        PathMatchingResourcePatternResolver resolver =
+                new PathMatchingResourcePatternResolver();
+        sessionFactory.setMapperLocations(resolver.getResources
+                ("classpath:mapper/*.xml"));
+        return sessionFactory.getObject();
     }
 
     @Bean
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) throws Exception {
-        final SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory);
+        final SqlSessionTemplate sqlSessionTemplate =
+                new SqlSessionTemplate(sqlSessionFactory);
         return sqlSessionTemplate;
     }
 
