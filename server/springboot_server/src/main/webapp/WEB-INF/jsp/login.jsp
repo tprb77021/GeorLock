@@ -10,9 +10,10 @@
 </head>
 <body>
 	<div class="login-page">
+
         <div class="form">
             <img src="/asset/images/georlocklogo.png">
-            <%--로그인 처리 해주세요(자동 로그인)--%>
+<%--로그인폼--%>
                 <form class="login-form" name="loginForm" action="record" method="post">
                     <input type="text" placeholder="ID"  name = "empNo" class="inputcontrol"/>
                     <input type="password" placeholder="PASSWORD" name = "userPw" class="inputcontrol"/>
@@ -23,8 +24,6 @@
                         </div>
                     <button type="submit">login</button>
                 </form>
-        </div>
-    </div>
 </body>
 </html>
 </html>
