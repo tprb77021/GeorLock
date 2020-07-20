@@ -9,12 +9,22 @@
 <title>login</title>
 </head>
 <body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        var responseMessage = "<c:out value="${message}" />";
+        if(responseMessage != ""){
+            alert(responseMessage)
+        }
+    })
+</script>
+
 	<div class="login-page">
 
         <div class="form">
             <img src="/asset/images/georlocklogo.png">
 <%--로그인폼--%>
-                <form class="login-form" name="loginForm" action="record" method="post">
+                <form class="login-form" name="login" action="login"  method="post">
                     <input type="text" placeholder="ID"  name = "empNo" class="inputcontrol"/>
                     <input type="password" placeholder="PASSWORD" name = "userPw" class="inputcontrol"/>
                         <div class="checkbox">
