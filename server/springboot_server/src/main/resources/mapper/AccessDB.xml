@@ -8,6 +8,15 @@
         select * from users;
     </select>
 
+    <delete id="delete" parameterType="String">
+        delete from users where empNo = #{empNo} ;
+    </delete>
+    <update id="update" parameterType ="com.springboot.georlock.dto.Login">
+        update users set intime=#{intime} , outtime=#{outtime}  where empNo = #{empNo}
+    </update>
 
+    <insert id="insert" parameterType ="com.springboot.georlock.dto.Login">
+        INSERT INTO users() VALUES(#{empNo},#{username},#{userPw},#{intime},#{outtime});
+    </insert>
 
 </mapper>

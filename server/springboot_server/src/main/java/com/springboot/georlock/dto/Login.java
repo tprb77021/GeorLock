@@ -10,7 +10,7 @@ import lombok.ToString;
 public class Login {
        private  String empNo ;
        private String userPw ;
-       private String intime ;
        private String username;
+       private String intime ;
        private String outtime ;
 }

@@ -6,7 +6,9 @@ import com.springboot.georlock.svc.AccessService;
 import com.springboot.georlock.svc.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.Cookie;
@@ -30,6 +32,46 @@ public class AccessController {
         List<Login> userlist= accessService.getAll();
         mav.addObject("userlist",userlist);
         return mav;
+    }
+
+    @RequestMapping("/accessdelete")
+    public String accessdelete(@RequestParam String empNo) throws Exception {
+        System.out.println("access");
+        System.out.println(empNo);
+        accessService.Accessdelete(empNo);
+        return "redirect:access";
+    }
+
+    @RequestMapping("/accessadd")
+    public String accessadd() throws Exception {
+        System.out.println("accessmodity");
+        return ""; //등록페이지 이름 적기
+    }
+
+    @RequestMapping("/accessinsert")
+    public String accessinsert(@RequestParam Login login) throws Exception {
+        System.out.println("accessinsert");
+        accessService.Accessinsert(login);
+
+
+        return "redirect:access";
+    }
+
+    @RequestMapping("/accessmodity")
+    public ModelAndView accessmodity(@RequestParam String empNo) throws Exception {
+        ModelAndView mav=new ModelAndView(""); //수정페이지 이름 적기
+        mav.addObject("empNo",empNo);
+        System.out.println("accessmodity");
+        System.out.println(empNo);
+        return mav;
+    }
+
+    @RequestMapping("/accessupdate")
+    public String accessupdate(@RequestParam String empNo,@RequestParam String intime,@RequestParam String outtime) throws Exception {
+        System.out.println("accessupdate");
+        System.out.println(empNo);
+        accessService.AccessUpdate(empNo,intime,outtime);
+        return "redirect:access";
     }
 
 

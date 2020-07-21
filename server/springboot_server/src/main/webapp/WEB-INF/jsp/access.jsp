@@ -69,10 +69,10 @@
 						<td>${list.intime} ~ ${list.outtime}</td>
 				<td>
 					<div class="btn-group">
-						<button type="button" id="modity_btn"  onClick="window.open('/accessmodity', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;">
+						<button type="button" id="modity_btn"  onClick="window.open('/accessmodity?empNo=${list.empNo}', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;">
 							<p class="modify">수정</p>
 						</button>
-						<button type="submit" id="delete_btn" onclick="return confirm('정말로 삭제하시겠습니까?')" href="/deleteActi" >
+						<button type="submit" id="delete_btn" onclick="view_confirm(${list.empNo})">
 							<p class="delete">삭제</p>
 						</button>
 					</div>
@@ -102,5 +102,15 @@
 			</div>
 		</nav>
 	</div>
+
+<script type="text/javascript">
+	function view_confirm(empNo)
+	{
+		var ans = confirm( "삭제 하시겠습니까?" );
+		if ( ans ) {
+			location.href = "/accessdelete?empNo="+empNo;
+		}
+	}
+</script>
 </body>
 </html>

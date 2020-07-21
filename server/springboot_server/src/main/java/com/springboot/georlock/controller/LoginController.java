@@ -71,11 +71,7 @@ public class LoginController {
 
 
 
-    @RequestMapping("/record")
-    public String record() {
-        System.out.println("record");
-        return "record";
-    }
+
 
 
     @RequestMapping("/logout")

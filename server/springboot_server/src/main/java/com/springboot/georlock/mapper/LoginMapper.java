@@ -6,5 +6,5 @@ import com.springboot.georlock.dto.Test;
 import java.util.List;
 
 public interface LoginMapper {
-    public Login Login(Login login) throws Exception;;
+    public Login Login(Login login) throws Exception;
 }

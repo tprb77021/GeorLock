@@ -20,4 +20,21 @@ public class AccessService {
     public List<Login> getAll() throws Exception{
         return accessMapper.getAll();
     }
+
+
+    public void AccessUpdate(String empNo, String intime, String outtime) throws Exception {
+        Login login=new Login();
+        login.setEmpNo(empNo);
+        login.setIntime(intime);
+        login.setOuttime(outtime);
+        accessMapper.update(login);
+    }
+
+    public void Accessdelete(String empNo) throws Exception {
+        accessMapper.delete(empNo);
+    }
+
+    public void Accessinsert(Login login) throws Exception {
+        accessMapper.insert(login);
+    }
 }
