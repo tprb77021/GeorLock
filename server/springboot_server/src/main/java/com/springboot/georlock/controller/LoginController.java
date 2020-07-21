@@ -1,6 +1,7 @@
 package com.springboot.georlock.controller;
 
 
+import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.dto.Test;
 import com.springboot.georlock.svc.LoginService;
 import com.springboot.georlock.svc.TestService;
@@ -26,10 +27,10 @@ public class LoginController {
 
 
 
-    @RequestMapping("/loginform")
-    public ModelAndView loginform(HttpServletResponse response, HttpServletRequest request) throws Exception {
+    @RequestMapping("/")
+    public  String loginform(HttpServletResponse response, HttpServletRequest request) throws Exception {
         Cookie[] cookies = request.getCookies();
-        ModelAndView modelAndView = new ModelAndView("login");
+        String page="login";
         if(cookies!=null){
             String empNo="";
             String userPw="";
@@ -42,22 +43,23 @@ public class LoginController {
                 }
             }
             if(loginService.Login(empNo,userPw)){
-                modelAndView.setViewName("access");
+                page="redirect:access";
             }
         }
         System.out.println("loginForm");
-        return modelAndView;
+
+        return page;
     }
 
     @RequestMapping("/login")
     public ModelAndView login(String empNo,String userPw,boolean autoLogin,HttpServletResponse response) throws Exception{
         System.out.println("login strat");
-        ModelAndView modelAndView = new ModelAndView("access");
+        ModelAndView modelAndView = new ModelAndView("redirect:/access");
         if(!loginService.Login(empNo,userPw)){
             modelAndView.setViewName("login");
             modelAndView.addObject("message", "로그인 실패");
         }
-        if(autoLogin){
+        else if(autoLogin){
             loginService.autoLogin(empNo,userPw,response);
         }
 
@@ -67,11 +69,7 @@ public class LoginController {
 
 
 
-    @RequestMapping("/access")
-    public String access() {
-        System.out.println("access");
-        return "access";
-    }
+
 
     @RequestMapping("/record")
     public String record() {
@@ -91,7 +89,7 @@ public class LoginController {
                 response.addCookie(cookies[i]);
             }
         }
-        return "redirect:/loginform";
+        return "redirect:/";
 
     }
 

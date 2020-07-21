@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 		 pageEncoding="UTF-8"%>
+<%@ taglib uri= "http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,6 +36,14 @@
 			</form>
 
 <%--테이블--%>
+			<div class="paginationBox">
+				<ul class="pagination">
+					<li class="page-item">
+					</li>
+				</ul>
+			</div>
+
+<%--페이징--%>
 			<table class="table">
 				<colgroup>
 					<col width="20%"/>
@@ -50,32 +59,29 @@
 					<th>수정/삭제</th>
 					</thead>
 				</tr>
-				<tr>
-					<td></td>
-					<td></td>
-					<td></td>
 
-<%--수정 삭제--%>
-					<td>
-						<div class="btn-group">
-							<button type="button" id="modity_btn" >
-								<p class="modify">수정</p>
-							</button>
-							<button type="submit" id="delete_btn">
-								<p class="delete">삭제</p>
-							</button>
-						</div>
-					</td>
+
+
+				<c:forEach items="${userlist}" var="list">
+					<tr>
+						<td>${list.empNo}</td>
+						<td>${list.username}</td>
+						<td>${list.intime} ~ ${list.outtime}</td>
+				<td>
+					<div class="btn-group">
+						<button type="button" id="modity_btn"  onClick="window.open('/accessmodity', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;">
+							<p class="modify">수정</p>
+						</button>
+						<button type="submit" id="delete_btn" onclick="return confirm('정말로 삭제하시겠습니까?')" href="/deleteActi" >
+							<p class="delete">삭제</p>
+						</button>
+					</div>
+				</td>
 				</tr>
-			</table>
+				</c:forEach>
 
-<%--페이징--%>
-			<div class="paginationBox">
-				<ul class="pagination">
-					<li class="page-item">
-					</li>
-				</ul>
-			</div>
+
+			</table>
 		</article>
 
 <%--navside--%>
