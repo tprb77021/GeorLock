@@ -5,7 +5,12 @@
 <mapper namespace="com.springboot.georlock.mapper.AccessMapper">
     <select id="getAll"
             resultType="com.springboot.georlock.dto.Login">
-        select * from users;
+        select empNo,username,intime,outtime from users;
+    </select>
+
+    <select id="Search" parameterType="String"
+            resultType="com.springboot.georlock.dto.Login">
+        select empNo,username,intime,outtime from users where empNo = #{textSearch} or username = #{textSearch};
     </select>
 
     <delete id="delete" parameterType="String">

@@ -5,6 +5,7 @@ import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.svc.AccessService;
 import com.springboot.georlock.svc.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.web.ResourceProperties;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,6 +35,16 @@ public class AccessController {
         return mav;
     }
 
+
+    @RequestMapping("/accessSearch")
+    public ModelAndView accessSearch(@RequestParam String textSearch) throws Exception {
+        ModelAndView mav=new ModelAndView("access");
+        System.out.println("accessSearch");
+        List<Login> userlist= accessService.AccessSearch(textSearch);
+        mav.addObject("userlist",userlist);
+        return mav;
+    }
+
     @RequestMapping("/accessdelete")
     public String accessdelete(@RequestParam String empNo) throws Exception {
         System.out.println("access");
@@ -58,9 +69,10 @@ public class AccessController {
     }
 
     @RequestMapping("/accessmodity")
-    public ModelAndView accessmodity(@RequestParam String empNo) throws Exception {
-        ModelAndView mav=new ModelAndView(""); //수정페이지 이름 적기
+    public ModelAndView accessmodity(@RequestParam String empNo,@RequestParam String username) throws Exception {
+        ModelAndView mav=new ModelAndView("modify");
         mav.addObject("empNo",empNo);
+        mav.addObject("username",username);
         System.out.println("accessmodity");
         System.out.println(empNo);
         return mav;
@@ -69,9 +81,12 @@ public class AccessController {
     @RequestMapping("/accessupdate")
     public String accessupdate(@RequestParam String empNo,@RequestParam String intime,@RequestParam String outtime) throws Exception {
         System.out.println("accessupdate");
-        System.out.println(empNo);
-        accessService.AccessUpdate(empNo,intime,outtime);
-        return "redirect:access";
+        Login login=new Login();
+        login.setEmpNo(empNo);
+        login.setIntime(intime);
+        login.setOuttime(outtime);
+        accessService.AccessUpdate(login);
+        return "close";
     }
 
 

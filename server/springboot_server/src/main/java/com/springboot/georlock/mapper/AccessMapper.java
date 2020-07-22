@@ -13,4 +13,6 @@ public interface AccessMapper {
     public void delete(String empNo) throws Exception;
 
     public  void insert(Login login) throws Exception;
+
+    public List<Login> Search(String textSearch) throws Exception;
 }

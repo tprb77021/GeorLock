@@ -30,11 +30,12 @@
 			<p>출입기록</p>
 
 <%--검색창--%>
-			<form id="searchForm" action="record" method="get">
+			<form id="searchForm" action="recordSearch" method="post">
 				<div class="search">
 					<input type = "date" name="startDate"/> ~
 					<input type = "date" name="endDate"/>
 					<input type="text"  name="textSearch" class="search_txt" placeholder="Search..."/>
+					<input type="submit" value="검색">
 				</div>
 			</form>
 

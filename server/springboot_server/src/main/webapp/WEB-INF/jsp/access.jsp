@@ -29,9 +29,10 @@
 			<p>출입권한설정</p>
 
 <%--검색창--%>
-			<form id="searchForm" action="access" method="get">
+			<form id="searchForm" action="accessSearch" method="post">
 				<div class="search">
 					<input type="text"  name="textSearch" class="search_txt" placeholder="Search..."/>
+					<input type="submit" value="검색">
 				</div>
 			</form>
 
@@ -69,7 +70,7 @@
 						<td>${list.intime} ~ ${list.outtime}</td>
 				<td>
 					<div class="btn-group">
-						<button type="button" id="modity_btn"  onClick="window.open('/accessmodity?empNo=${list.empNo}', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;">
+						<button type="button" id="modity_btn"  onClick="window.open('/accessmodity?empNo=${list.empNo}&username=${list.username}', '_blank', 'width=500px,height=400px,toolbars=no,scrollbars=no'); return false;">
 							<p class="modify">수정</p>
 						</button>
 						<button type="submit" id="delete_btn" onclick="view_confirm(${list.empNo})">

@@ -22,11 +22,7 @@ public class AccessService {
     }
 
 
-    public void AccessUpdate(String empNo, String intime, String outtime) throws Exception {
-        Login login=new Login();
-        login.setEmpNo(empNo);
-        login.setIntime(intime);
-        login.setOuttime(outtime);
+    public void AccessUpdate(Login login) throws Exception {
         accessMapper.update(login);
     }
 
@@ -37,4 +33,10 @@ public class AccessService {
     public void Accessinsert(Login login) throws Exception {
         accessMapper.insert(login);
     }
+
+    public List<Login> AccessSearch(String textSearch) throws Exception{
+       return accessMapper.Search(textSearch);
+    }
+
+
 }
