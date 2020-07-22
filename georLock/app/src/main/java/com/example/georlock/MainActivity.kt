@@ -3,9 +3,12 @@ package com.example.georlock
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.net.HttpURLConnection
+import java.net.URL
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,5 +33,18 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
+    }
+
+    fun UpdateMainLog(empNo:String,userPw:String):String{
+        val url = URL("http://192.168.0.88:8090/login?empNo=${empNo}&userPw=${userPw}")
+        val conn = url.openConnection() as HttpURLConnection // casting
+        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
+
+        if(conn.responseCode == 200){
+            val txt = url.readText()
+            /*val arr = JSONArray(txt)
+            var item = arr*/
+            return "${txt}"
+        } else return "null"
     }
 }
