@@ -26,15 +26,25 @@
 
 	<div id="main" >
 		<article class="main-item">
-			<p>출입권한설정</p>
+			<p class="mainComment">출입권한설정</p>
 
 <%--검색창--%>
+
+			<div class="main-menu">
+				<div>
+			<button type="submit" id="insert_btn" onclick="">
+				<p class="insert">등록하기</p>
+			</button>
+				</div>
+				<div>
 			<form id="searchForm" action="accessSearch" method="post">
 				<div class="search">
 					<input type="text"  name="textSearch" class="search_txt" placeholder="Search..."/>
 					<input type="submit" value="검색">
 				</div>
 			</form>
+				</div>
+			</div>
 
 <%--테이블--%>
 			<div class="paginationBox">
