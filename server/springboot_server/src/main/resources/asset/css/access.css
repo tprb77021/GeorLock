@@ -1,13 +1,12 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto&display=swap");
 
 a {
     text-decoration: none;
-    color: #FFF;
-    font-family: 'Roboto', sans-serif;
+    color: #fff;
+    font-family: "Roboto", sans-serif;
 }
 
-ul{
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -34,93 +33,117 @@ body {
 }
 #main > nav {
     flex: 0 0 15%;
-    background: #2497F4;
+    background: #2497f4;
     text-align: center;
-
 }
 #main > nav {
     order: -1;
 }
 
-
-.nav-item{
+.nav-item {
     margin-top: 60px;
-
 }
 
-.nav-item ul li a{
+.nav-item ul li a {
     padding: 15px 0px;
     margin: 40px 0px;
     transition: 0.2s;
-    font-family: 'Noto Sans KR', sans-serif;
+    font-family: "Noto Sans KR", sans-serif;
 }
 
-
-.nav-item ul li a span{
+.nav-item ul li a span {
     font-size: 20px;
 }
 
-.nav-item ul li a:hover{
+.nav-item ul li a:hover {
     background: #053863;
 }
 
-nav a{
+nav a {
     display: block;
 }
 
-
-header, article{
+header,
+article {
     padding: 1em;
 }
 
 header {
     display: flex;
     height: 10%;
-    border-bottom: 1px solid #E7E6E6;
+    border-bottom: 1px solid #e7e6e6;
     justify-content: space-between;
     align-items: center;
     padding: 0px 5vh 0px 4vh;
-
 }
 
-.logoImg img{
+.logoImg img {
     margin-top: 10px;
     width: 25%;
     height: 50px;
 }
 
-.logout{
-
+.logout {
     font-size: 20px;
 }
 
-.logout a{
-    color: #7F7F7F;
+.logout a {
+    color: #7f7f7f;
 }
 
-
-button, input, a {
+button,
+input,
+a {
     outline: none;
 }
 
-
-.search{
-    margin-top: 40px;
-    margin-left: 74%;
-    width: 700px;
+.main-menu {
+    justify-content: space-between;
+    display: flex;
+    margin-left: 10%;
+    width: 80%;
+    height: 40px;
 }
 
+button .insert {
+    background-color: #e2e7ee;
+    border-radius: 8px;
+    border: 1px solid #e2e7ee;
+    color: #ffffff;
+    padding: 4px 0;
+    display: inline-block;
+    height: 30px;
+    font-size: 15px;
+    margin: 0px;
+    width: 90px;
+}
 
-.search input[type="text"]{
+.search {
+    display: inline-block;
+    width: 260px;
+}
+
+.search input[type="text"] {
     width: 200px;
     height: 30px;
     border-radius: 6px;
     border: 1px solid #e2e7ee;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
 }
 
-.table{
-    margin-top: 20px;
+.search input[type="submit"] {
+    background-color: #e2e7ee;
+    border-radius: 8px;
+    border: 1px solid #e2e7eeed;
+    color: #053863;
+    padding: 4px 0;
+    width: 50px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.table {
+    margin-top: 10px;
     border-collapse: collapse;
     width: 80%;
     text-align: center;
@@ -129,7 +152,6 @@ button, input, a {
     border-spacing: 0;
     border-radius: 6px;
     box-shadow: 0px 0px 10px rgba(114, 114, 113, 0.5);
-
 }
 table thead th {
     height: 40px;
@@ -137,43 +159,43 @@ table thead th {
     font-size: 16px;
 }
 
-.table th{
+.table th {
     color: #053863;
-
 }
-.table td{
+.table td {
     font-size: 14px;
 }
-.main-item p{
+.main-item p {
     margin-left: 10%;
     color: #053863;
+}
+
+.mainComment {
     font-size: 35px;
 }
 
-.main-item{
+.main-item {
     margin-top: 10px;
-    font-family: 'Noto Sans KR', sans-serif;
-
+    font-family: "Noto Sans KR", sans-serif;
 }
 
-
 button .modify {
-    background-color:#2497f4;
-    border-radius:8px;
-    border:1px solid #2497f4;
+    background-color: #2497f4;
+    border-radius: 8px;
+    border: 1px solid #2497f4;
     color: #ffffff;
-    padding:4px 0;
+    padding: 4px 0;
     width: 50px;
     height: 30px;
     font-size: 15px;
 }
 
 button .delete {
-    background-color:red;
-    border-radius:8px;
-    border:1px solid red;
+    background-color: red;
+    border-radius: 8px;
+    border: 1px solid red;
     color: #ffffff;
-    padding:4px 0;
+    padding: 4px 0;
     width: 50px;
     height: 30px;
     font-size: 15px;
