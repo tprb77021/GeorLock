@@ -8,4 +8,9 @@
         select * from users where empNo = #{empNo} and userPw = #{userPw};
     </select>
 
+    <update id="userUpdate" parameterType ="com.springboot.georlock.dto.Login">
+        update users set username=#{username} , userPw=#{userPw}  where empNo = #{empNo}
+    </update>
+
+
 </mapper>

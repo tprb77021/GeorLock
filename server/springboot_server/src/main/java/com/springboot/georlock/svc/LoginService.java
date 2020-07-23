@@ -18,13 +18,14 @@ public class LoginService {
     @Autowired
     LoginMapper loginMapper;
 
-    public boolean Login(String empNo,String userPw) throws Exception{
-        boolean loginsuccess= false;
+    public Login Login(String empNo,String userPw) throws Exception{
+        Login loginsuccess= new Login();
         Login login=new Login();
         login.setEmpNo(empNo);
         login.setUserPw(userPw);
+        loginsuccess.setUsertype("0");
       if(loginMapper.Login(login)!=null){
-          loginsuccess=true;
+          loginsuccess=loginMapper.Login(login);
       }
 
         return loginsuccess;
@@ -39,6 +40,15 @@ public class LoginService {
         cookie2.setMaxAge(-1);
         cookie2.setPath("/");
         response.addCookie(cookie2);
+
+    }
+
+    public void userUpdate(String empNo, String userPw, String username) throws Exception{
+        Login login=new Login();
+        login.setEmpNo(empNo);
+        login.setUserPw(userPw);
+        login.setUsername(username);
+        loginMapper.userUpdate(login);
 
     }
 }

@@ -42,7 +42,7 @@ public class LoginController {
                     userPw= cookies[i].getValue();
                 }
             }
-            if(loginService.Login(empNo,userPw)){
+            if(loginService.Login(empNo,userPw)==null){
                 page="redirect:access";
             }
         }
@@ -55,7 +55,7 @@ public class LoginController {
     public ModelAndView login(String empNo,String userPw,boolean autoLogin,HttpServletResponse response) throws Exception{
         System.out.println("login strat");
         ModelAndView modelAndView = new ModelAndView("redirect:/access");
-        if(!loginService.Login(empNo,userPw)){
+        if(loginService.Login(empNo,userPw)==null){
             modelAndView.setViewName("login");
             modelAndView.addObject("message", "로그인 실패");
         }

@@ -13,6 +13,7 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
+import java.net.URLEncoder
 
 class function_openList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,9 +33,20 @@ class function_openList : AppCompatActivity() {
         }.start()
 
 
-        back_list1.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        search_open_button.setOnClickListener {
+            Thread(){
+                var list:ArrayList<String> = searchMainLog("${search_open.text.toString()}","${search_opendate1.text.toString()}","${search_opendate2.text.toString()}")
+                runOnUiThread{
+                    Log.i("testLog", "loginclick : ${list}")
+                    openlistview.adapter = ArrayAdapter<String>(
+                        this,
+//            android.R.layout.simple_list_item_1,
+                        R.layout.layout_list,
+                        list)
+
+
+                }
+            }.start()
         }
     }
 
@@ -50,7 +62,27 @@ class function_openList : AppCompatActivity() {
             for(i in 0 until arr.length()){
                 var obj:JSONObject = arr.get(i) as JSONObject
                 Log.i("testLog", "cc :${ obj["intime"].toString()}")
-                list.add("사번 : ${ obj["empNo"].toString()} 이름 : ${ obj["username"].toString()} \n출입 시간 : ${ obj["intime"].toString()}")
+                  list.add("사번 : ${ obj["empNo"].toString()} 이름 : ${ obj["username"].toString()} \n출입 시간 : ${ obj["intime"].toString()}")
+            }
+            return list
+        } else return list
+    }
+
+
+    fun searchMainLog(search:String,date1:String,date2:String):ArrayList<String>{
+
+        var se=  URLEncoder.encode(search, "UTF-8");
+        val url = URL("http://192.168.0.88:8090/openSearch?search=${se}")
+        val conn = url.openConnection() as HttpURLConnection // casting
+        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
+        Log.i("testLog", "search : ${se}")
+        var list:ArrayList<String> = arrayListOf()
+        if(conn.responseCode == 200){
+            var txt = url.readText()
+            var arr: JSONArray = JSONArray(txt)
+            for(i in 0 until arr.length()){
+                var obj: JSONObject = arr.get(i) as JSONObject
+                list.add("사번 : ${ obj["empNo"].toString()} \n이름 : ${ obj["username"].toString()} \n출입 시간 : ${ obj["intime"].toString()} ~ ${ obj["outtime"].toString()}")
             }
             return list
         } else return list

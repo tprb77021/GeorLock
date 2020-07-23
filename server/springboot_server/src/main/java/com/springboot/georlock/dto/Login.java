@@ -13,4 +13,5 @@ public class Login {
        private String username;
        private String intime ;
        private String outtime ;
+       private String usertype ;
 }

@@ -1,5 +1,6 @@
 package com.springboot.georlock.controller;
 
+import com.springboot.georlock.dto.Dates;
 import com.springboot.georlock.dto.Enteremp;
 import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.dto.Test;
@@ -42,16 +43,44 @@ public class TestController {
         return testService.getAll();
     }
 
+    @GetMapping( value = "/accessSearch" )
+    public List<Login> accessSearch(String search) throws Exception{
+        System.out.println(search);
+        return  accessService.AccessSearch(search);
+    }
+    @GetMapping( value = "/openSearch" )
+    public List<Enteremp> openSearch(String search,String startDate,String endDate) throws Exception{
+        System.out.println(search);
+        Dates dates=new Dates();
+        dates.setStartDate(startDate);
+        dates.setEndDate(startDate);
+        dates.setTextSearch(search);
+        return  recordService.getRecordSearch(dates);
+    }
+
     @GetMapping("/login")
     public String login(String empNo, String userPw) throws Exception{
         System.out.println("android login strat");
-        String log="1성공";
-        if(!loginService.Login(empNo,userPw)){
+        String log="1성공@"+loginService.Login(empNo,userPw).getIntime()+"@"+loginService.Login(empNo,userPw).getOuttime()+"@"+loginService.Login(empNo,userPw).getEmpNo();
+        if(loginService.Login(empNo,userPw).getUsertype().equals("0")){
             log="0실패";
+        }
+        else if(loginService.Login(empNo,userPw).getUsertype().equals("2")){
+            log="2성공";
         }
         System.out.println("login end");
         return log;
     }
+
+    @GetMapping("/userupdate")
+    public void userupdate(String empNo,String userPw,String username) throws Exception{
+        System.out.println("android userupdate");
+        System.out.println(empNo+userPw+username);
+        loginService.userUpdate(empNo,userPw,username);
+
+    }
+
+
     @GetMapping("/delete")
     public void delete(String empNo) throws Exception{
         System.out.println("android delete");

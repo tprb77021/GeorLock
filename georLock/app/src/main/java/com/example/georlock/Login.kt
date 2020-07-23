@@ -28,15 +28,22 @@ class Login : AppCompatActivity() {
             Log.i("testLog", "loginclick u:${username.text}p:${password.text}")
             Thread(){
                  tmp = UpdateMainLog("${username.text}","${password.text}")
+                var tmps:List<String> = tmp.split("@");
                 runOnUiThread{
                     Log.i("testLog", "loginclick : ${tmp}")
                     if("${tmp}".equals("0실패")){
                         Log.i("testLog", "로그인실패")
                         Toast.makeText(this, "로그인 실패.", Toast.LENGTH_SHORT).show()
                     }
-                    else if("${tmp}".equals("1성공")){
+                    else if("${tmp}".equals("2성공")){
                         Log.i("testLog", "로그인성공")
                         val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    else if("${tmps[0]}".equals("1성공")){
+                        Log.i("testLog", "로그인성공1 +${tmps}")
+                        val intent = Intent(this, UserMain::class.java)
+                        intent.putExtra("infos","${tmps[1]}@${tmps[2]}@${tmps[3]}")
                         startActivity(intent)
                     }
                 }
