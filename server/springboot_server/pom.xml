@@ -10,10 +10,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.springboot</groupId>
-    <artifactId>smartvalve</artifactId>
+    <artifactId>georlock</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>smartvalve</name>
-    <description>smartvalve</description>
+    <name>georlock</name>
+    <description>georlock</description>
 
     <properties>
         <java.version>1.8</java.version>

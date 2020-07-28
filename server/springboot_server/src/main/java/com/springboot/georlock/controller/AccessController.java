@@ -24,30 +24,29 @@ public class AccessController {
     AccessService accessService;
 
 
-
-
     @RequestMapping("/access")
     public ModelAndView access() throws Exception {
         System.out.println("access");
-        ModelAndView mav=new ModelAndView("access");
-        List<Login> userlist= accessService.getAll();
-        mav.addObject("userlist",userlist);
+        ModelAndView mav = new ModelAndView("access");
+        List<Login> userlist = accessService.getAll();
+        mav.addObject("userlist", userlist);
         return mav;
     }
 
 
     @RequestMapping("/accessSearch")
     public ModelAndView accessSearch(@RequestParam String textSearch) throws Exception {
-        ModelAndView mav=new ModelAndView("access");
+        ModelAndView mav = new ModelAndView("access");
         System.out.println("accessSearch");
-        List<Login> userlist= accessService.AccessSearch(textSearch);
-        mav.addObject("userlist",userlist);
+        List<Login> userlist = accessService.AccessSearch(textSearch);
+        mav.addObject("userlist", userlist);
         return mav;
     }
+
     @RequestMapping("/empSearch")
     public ModelAndView empSearch(@RequestParam String textSearch) throws Exception {
-        ModelAndView mav=new ModelAndView("insert");
-        mav.addObject("empuser",accessService.empSearch(textSearch));
+        ModelAndView mav = new ModelAndView("insert");
+        mav.addObject("empuser", accessService.empSearch(textSearch));
         return mav;
     }
 
@@ -60,14 +59,11 @@ public class AccessController {
     }
 
 
-
-
-
     @RequestMapping("/accessmodity")
-    public ModelAndView accessmodity(@RequestParam String empNo,@RequestParam String username) throws Exception {
-        ModelAndView mav=new ModelAndView("modify");
-        mav.addObject("empNo",empNo);
-        mav.addObject("username",username);
+    public ModelAndView accessmodity(@RequestParam String empNo, @RequestParam String username) throws Exception {
+        ModelAndView mav = new ModelAndView("modify");
+        mav.addObject("empNo", empNo);
+        mav.addObject("username", username);
         System.out.println("accessmodity");
         System.out.println(empNo);
         return mav;
@@ -83,16 +79,15 @@ public class AccessController {
 
     @RequestMapping("/insert_btn")
     public ModelAndView insertform() throws Exception {
-        ModelAndView mav=new ModelAndView("insert");
-        mav.addObject("empuser",accessService.emplist());
+        ModelAndView mav = new ModelAndView("insert");
+        mav.addObject("empuser", accessService.emplist());
         return mav;
     }
 
 
-
     @RequestMapping("/accessinsert")
-    public String accessinsert( Login login) throws Exception {
-        System.out.println("a :"+login);
+    public String accessinsert(Login login) throws Exception {
+        System.out.println("a :" + login);
         accessService.Accessinsert(login);
         return "redirect:access";
     }
