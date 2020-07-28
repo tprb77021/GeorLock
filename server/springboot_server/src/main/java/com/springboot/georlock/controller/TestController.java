@@ -73,10 +73,10 @@ public class TestController {
     }
 
     @GetMapping("/userupdate")
-    public void userupdate(String empNo,String userPw,String username) throws Exception{
+    public void userupdate(String empNo,String userPw) throws Exception{
         System.out.println("android userupdate");
-        System.out.println(empNo+userPw+username);
-        loginService.userUpdate(empNo,userPw,username);
+        System.out.println(empNo+userPw);
+        loginService.userUpdate(empNo,userPw);
 
     }
 

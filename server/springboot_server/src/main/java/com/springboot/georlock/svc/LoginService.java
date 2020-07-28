@@ -43,11 +43,11 @@ public class LoginService {
 
     }
 
-    public void userUpdate(String empNo, String userPw, String username) throws Exception{
+    public void userUpdate(String empNo, String userPw) throws Exception{
         Login login=new Login();
         login.setEmpNo(empNo);
         login.setUserPw(userPw);
-        login.setUsername(username);
+
         loginMapper.userUpdate(login);
 
     }

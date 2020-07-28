@@ -31,8 +31,15 @@ public class AccessService {
     }
 
     public void Accessinsert(Login login) throws Exception {
+            login.setUserPw(login.getEmpNo());
         accessMapper.insert(login);
     }
+
+    public List<Login> emplist() throws Exception {
+      return  accessMapper.emplist();
+    }
+
+
 
     public List<Login> AccessSearch(String textSearch) throws Exception{
 
@@ -42,4 +49,8 @@ public class AccessService {
     }
 
 
+    public List<Login> empSearch(String textSearch) throws Exception{
+        String Search = "%"+textSearch+"%";
+        return accessMapper.empSearch(Search);
+    }
 }

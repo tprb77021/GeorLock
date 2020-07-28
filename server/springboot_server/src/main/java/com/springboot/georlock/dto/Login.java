@@ -11,7 +11,7 @@ public class Login {
        private  String empNo ;
        private String userPw ;
        private String username;
-       private String intime ;
-       private String outtime ;
-       private String usertype ;
+       private String intime ="00:00";
+       private String outtime ="00:00";
+       private String usertype ="1";
 }

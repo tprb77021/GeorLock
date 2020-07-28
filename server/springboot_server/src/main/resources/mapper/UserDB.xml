@@ -9,7 +9,7 @@
     </select>
 
     <update id="userUpdate" parameterType ="com.springboot.georlock.dto.Login">
-        update users set username=#{username} , userPw=#{userPw}  where empNo = #{empNo}
+        update users set  userPw=#{userPw}  where empNo = #{empNo}
     </update>
 
 

@@ -15,4 +15,8 @@ public interface AccessMapper {
     public  void insert(Login login) throws Exception;
 
     public List<Login> Search(String textSearch) throws Exception;
+
+    public List<Login> emplist() throws Exception;
+
+    public List<Login> empSearch(String textSearch) throws Exception;
 }
