@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 
 import android.util.Log
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_info.*
 import kotlinx.android.synthetic.main.activity_info.username
 import kotlinx.android.synthetic.main.activity_login.*
@@ -17,6 +18,7 @@ class Accessmodity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         var strings: String? = intent.getStringExtra("info")?.replace("\n", "");
         var infos: List<String>? = strings?.split(" ")
         Log.i("testLog", "${infos?.size}")
@@ -78,6 +80,15 @@ class Accessmodity : AppCompatActivity() {
             }
         }
 
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                //toolbar의 back키 눌렀을 때 동작
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
     }
 

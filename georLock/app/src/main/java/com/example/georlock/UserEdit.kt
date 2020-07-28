@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_authorization_list.*
@@ -18,6 +19,7 @@ class UserEdit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_edit)
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         var tmp:String?= ""
         var infos:List<String>? =null
         if(intent.hasExtra("infoss")){
@@ -70,5 +72,14 @@ class UserEdit : AppCompatActivity() {
             return "${txt}"
         } else return "null"
     }
-
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                //toolbar의 back키 눌렀을 때 동작
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

@@ -21,7 +21,7 @@ class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
-
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         login_button.setOnClickListener {
 
             var tmp:String = ""
@@ -31,13 +31,14 @@ class Login : AppCompatActivity() {
                 var tmps:List<String> = tmp.split("@");
                 runOnUiThread{
                     Log.i("testLog", "loginclick : ${tmp}")
-                    if("${tmp}".equals("0실패")){
+                    if("${tmps[0]}".equals("0실패")){
                         Log.i("testLog", "로그인실패")
                         Toast.makeText(this, "로그인 실패.", Toast.LENGTH_SHORT).show()
                     }
-                    else if("${tmp}".equals("2성공")){
+                    else if("${tmps[0]}".equals("2성공")){
                         Log.i("testLog", "로그인성공")
                         val intent = Intent(this, MainActivity::class.java)
+                        intent.putExtra("infos","${tmps[3]}")
                         startActivity(intent)
                     }
                     else if("${tmps[0]}".equals("1성공")){
@@ -69,6 +70,3 @@ class Login : AppCompatActivity() {
 
 }
 
-// \( *^_^*)/ 진주님 화이팅!!
-// ('')( :)(..)(: ) 데굴데굴
-//enable을 쓰지말자 !!

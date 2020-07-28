@@ -66,7 +66,7 @@ public class TestController {
             log="0실패";
         }
         else if(loginService.Login(empNo,userPw).getUsertype().equals("2")){
-            log="2성공";
+            log="2성공@"+loginService.Login(empNo,userPw).getIntime()+"@"+loginService.Login(empNo,userPw).getOuttime()+"@"+loginService.Login(empNo,userPw).getEmpNo();;
         }
         System.out.println("login end");
         return log;
@@ -95,6 +95,18 @@ public class TestController {
         login.setIntime(intime);
         login.setOuttime(outtime);
         accessService.AccessUpdate(login);
+    }
+
+    @GetMapping("/opencall")
+    public void opencall(String empNo) throws Exception{
+        System.out.println("opencall :"+empNo);
+    }
+
+    @GetMapping("/open")
+    public String open(String empNo) throws Exception{
+
+        System.out.println("open :"+empNo);
+        return  "openSuccess";
     }
 
 }

@@ -10,7 +10,7 @@
 
     <select id="Search" parameterType="String"
             resultType="com.springboot.georlock.dto.Login">
-        select empNo,username,intime,outtime from users where empNo = #{textSearch} or username = #{textSearch};
+        select empNo,username,intime,outtime from users where empNo LIKE  #{textSearch} or username LIKE #{textSearch};
     </select>
 
     <delete id="delete" parameterType="String">
@@ -21,7 +21,7 @@
     </update>
 
     <insert id="insert" parameterType ="com.springboot.georlock.dto.Login">
-        INSERT INTO users() VALUES(#{empNo},#{username},#{userPw},#{intime},#{outtime});
+        INSERT INTO users() VALUES(#{empNo},#{username},#{userPw},#{intime},#{outtime},#{usertype});
     </insert>
 
 </mapper>

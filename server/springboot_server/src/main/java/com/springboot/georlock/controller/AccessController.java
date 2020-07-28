@@ -53,20 +53,9 @@ public class AccessController {
         return "redirect:access";
     }
 
-    @RequestMapping("/accessadd")
-    public String accessadd() throws Exception {
-        System.out.println("accessmodity");
-        return ""; //등록페이지 이름 적기
-    }
-
-    @RequestMapping("/accessinsert")
-    public String accessinsert(@RequestParam Login login) throws Exception {
-        System.out.println("accessinsert");
-        accessService.Accessinsert(login);
 
 
-        return "redirect:access";
-    }
+
 
     @RequestMapping("/accessmodity")
     public ModelAndView accessmodity(@RequestParam String empNo,@RequestParam String username) throws Exception {
@@ -79,15 +68,26 @@ public class AccessController {
     }
 
     @RequestMapping("/accessupdate")
-    public String accessupdate(@RequestParam String empNo,@RequestParam String intime,@RequestParam String outtime) throws Exception {
+    public String accessupdate(Login login) throws Exception {
         System.out.println("accessupdate");
-        Login login=new Login();
-        login.setEmpNo(empNo);
-        login.setIntime(intime);
-        login.setOuttime(outtime);
+
         accessService.AccessUpdate(login);
         return "close";
     }
 
+    @RequestMapping("/insert_btn")
+    public String insertform() throws Exception {
+        return "insert";
+    }
+
+
+
+    @RequestMapping("/accessinsert")
+    public String accessinsert( Login login) throws Exception {
+        System.out.println("a :"+login);
+
+        accessService.Accessinsert(login);
+        return "redirect:access";
+    }
 
 }

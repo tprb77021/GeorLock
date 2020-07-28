@@ -1,13 +1,13 @@
 package com.example.georlock
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_authorization_list.*
-import kotlinx.android.synthetic.main.activity_function_open_list.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.HttpURLConnection
@@ -15,10 +15,11 @@ import java.net.URL
 import java.net.URLEncoder
 
 class AuthorizationList : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_authorization_list)
-
+        getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         Thread(){
             var list:ArrayList<String> = UpdateMainLog()
             runOnUiThread{
@@ -67,10 +68,7 @@ class AuthorizationList : AppCompatActivity() {
             }.start()
         }
 
-        back_list2.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
+
     }
 
   /*  <th>사번</th>
@@ -114,4 +112,14 @@ class AuthorizationList : AppCompatActivity() {
     }
 
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.getItemId()) {
+            android.R.id.home -> {
+                //toolbar의 back키 눌렀을 때 동작
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
 }

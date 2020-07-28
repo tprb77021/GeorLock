@@ -9,15 +9,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1">
-        <ImageButton
-            android:id="@+id/back_list2"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_leftback"
-            android:background="@color/white"
-            android:layout_marginLeft="20dp"/>
-    </LinearLayout>
+        android:layout_weight="1"/>
 
     <LinearLayout
         android:layout_width="0dp"

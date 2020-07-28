@@ -33,7 +33,7 @@
 			<div class="main-menu">
 				<div>
 			<button type="submit" id="insert_btn" onclick="">
-				<p class="insert">등록하기</p>
+				<p class="insert"><a href="insert_btn">등록하기</a></p>
 			</button>
 				</div>
 				<div>

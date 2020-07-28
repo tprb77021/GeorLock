@@ -35,7 +35,10 @@ public class AccessService {
     }
 
     public List<Login> AccessSearch(String textSearch) throws Exception{
-       return accessMapper.Search(textSearch);
+
+        String Search = "%"+textSearch+"%";
+
+       return accessMapper.Search(Search);
     }
 
 
