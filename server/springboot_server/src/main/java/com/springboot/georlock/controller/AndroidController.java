@@ -71,12 +71,13 @@ public class AndroidController {
     //로그인
     @GetMapping("/login")
     public String login(String empNo, String userPw) throws Exception{
-        String log="1성공@"+loginService.Login(empNo,userPw).getIntime()+"@"+loginService.Login(empNo,userPw).getOuttime()+"@"+loginService.Login(empNo,userPw).getEmpNo();
-        if(loginService.Login(empNo,userPw).getUsertype().equals("0")){
+        Login login=loginService.Login(empNo,userPw);
+        String log="1성공@"+login.getIntime()+"@"+login.getOuttime()+"@"+login.getEmpNo();
+        if(login.getUsertype().equals("0")){
             log="0실패";
         }
-        else if(loginService.Login(empNo,userPw).getUsertype().equals("2")){
-            log="2성공@"+loginService.Login(empNo,userPw).getIntime()+"@"+loginService.Login(empNo,userPw).getOuttime()+"@"+loginService.Login(empNo,userPw).getEmpNo();;
+        else if(login.getUsertype().equals("2")){
+            log="2성공@"+login.getIntime()+"@"+login.getOuttime()+"@"+login.getEmpNo();;
         }
         return log;
     }

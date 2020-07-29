@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.os.Handler
 
 class Loading : AppCompatActivity() {
+    internal val app_serverurl = "http://192.168.0.88:8091"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_loading)

@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">georLock</string>
+    <string name="app_url">http://192.168.0.88:8090</string>
 </resources>

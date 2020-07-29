@@ -58,7 +58,7 @@ class UserMain : AppCompatActivity() {
     }
 
     fun opencall(empNo:String):String{
-        val url = URL("http://192.168.0.88:8090/opencall?empNo=${empNo}")
+        val url = URL("${static.server_url}/opencall?empNo=${empNo}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 

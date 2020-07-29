@@ -60,7 +60,7 @@ class UserEdit : AppCompatActivity() {
     }
 
     fun UpdateMainLog(empNo:String,userPw:String):String{
-        val url = URL("http://192.168.0.88:8090/userupdate?empNo=${empNo}&userPw=${userPw}")
+        val url = URL("${static.server_url}/userupdate?empNo=${empNo}&userPw=${userPw}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 

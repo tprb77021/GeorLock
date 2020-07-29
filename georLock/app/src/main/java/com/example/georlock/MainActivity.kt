@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun open(empNo:String):String{
-        val url = URL("http://192.168.0.88:8090/open?empNo=${empNo}")
+        val url = URL("${static.server_url}/open?empNo=${empNo}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
@@ -78,8 +78,9 @@ class MainActivity : AppCompatActivity() {
             return "${txt}"
         } else return "null"
     }
+
     fun UpdateMainLog(empNo:String,userPw:String):String{
-        val url = URL("http://192.168.0.88:8090/login?empNo=${empNo}&userPw=${userPw}")
+        val url = URL("${static.server_url}/login?empNo=${empNo}&userPw=${userPw}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 

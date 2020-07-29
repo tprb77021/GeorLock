@@ -9,16 +9,7 @@
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="1">
-        <ImageButton
-            android:id="@+id/back_list3"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:src="@drawable/ic_leftback"
-            android:background="@color/white"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"/>
-    </LinearLayout>
+        android:layout_weight="1"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -36,7 +27,7 @@
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="회원정보 수정"
+                android:text="비밀번호 변경"
                android:textSize="25dp" />
         </LinearLayout>
 
@@ -103,7 +94,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.05"/>
+            android:layout_weight="0.1"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -115,7 +106,7 @@
                 android:id="@+id/request_ckeck"
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="수정"
+                android:text="변경"
                 android:textSize="20dp"
                 android:gravity="center"
                 android:textColor="@color/white"

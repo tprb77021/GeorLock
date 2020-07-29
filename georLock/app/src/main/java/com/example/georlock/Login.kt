@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.Toast
+import com.example.georlock.static.Companion.server_url
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -56,7 +57,7 @@ class Login : AppCompatActivity() {
     }
 
     fun UpdateMainLog(empNo:String,userPw:String):String{
-        val url = URL("http://192.168.0.88:8090/login?empNo=${empNo}&userPw=${userPw}")
+        val url = URL("${server_url}/login?empNo=${empNo}&userPw=${userPw}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 

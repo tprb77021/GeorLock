@@ -20,6 +20,7 @@ public class LoginService {
 
     public Login Login(String empNo,String userPw) throws Exception{
         Login loginsuccess= new Login();
+
         Login login=new Login();
         login.setEmpNo(empNo);
         login.setUserPw(userPw);

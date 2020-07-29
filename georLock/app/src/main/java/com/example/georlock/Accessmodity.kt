@@ -9,8 +9,6 @@ import android.util.Log
 import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_info.*
 import kotlinx.android.synthetic.main.activity_info.username
-import kotlinx.android.synthetic.main.activity_login.*
-
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -57,7 +55,7 @@ class Accessmodity : AppCompatActivity() {
         }
 
         fun deleteMainLog(empNo: String) {
-            val url = URL("http://192.168.0.88:8090/delete?empNo=${empNo}")
+            val url = URL("${static.server_url}/delete?empNo=${empNo}")
             val conn = url.openConnection() as HttpURLConnection // casting
             Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
@@ -69,7 +67,7 @@ class Accessmodity : AppCompatActivity() {
         }
 
         fun UpdateMainLog(empNo: String,intime: String,outtime:String) {
-            val url = URL("http://192.168.0.88:8090/update?empNo=${empNo}&intime=${intime}&outtime=${outtime}")
+            val url = URL("${static.server_url}/update?empNo=${empNo}&intime=${intime}&outtime=${outtime}")
             val conn = url.openConnection() as HttpURLConnection // casting
             Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 

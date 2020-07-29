@@ -79,7 +79,7 @@ class AuthorizationList : AppCompatActivity() {
     fun searchMainLog(search:String):ArrayList<String>{
 
         var se=  URLEncoder.encode(search, "UTF-8");
-        val url = URL("http://192.168.0.88:8090/accessSearch?search=${se}")
+        val url = URL("${static.server_url}/accessSearch?search=${se}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
         Log.i("testLog", "search : ${se}")
@@ -96,7 +96,7 @@ class AuthorizationList : AppCompatActivity() {
     }
 
     fun UpdateMainLog():ArrayList<String>{
-        val url = URL("http://192.168.0.88:8090/accesslist")
+        val url = URL("${static.server_url}/accesslist")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
         var list:ArrayList<String> = arrayListOf()

@@ -52,7 +52,7 @@ class function_openList : AppCompatActivity() {
 
 
     fun UpdateMainLog():ArrayList<String>{
-        val url = URL("http://192.168.0.88:8090/openlist")
+        val url = URL("${static.server_url}/openlist")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
         var list:ArrayList<String> = arrayListOf()
@@ -72,7 +72,7 @@ class function_openList : AppCompatActivity() {
     fun searchMainLog(search:String,date1:String,date2:String):ArrayList<String>{
 
         var se=  URLEncoder.encode(search, "UTF-8");
-        val url = URL("http://192.168.0.88:8090/openSearch?search=${se}")
+        val url = URL("${static.server_url}/openSearch?search=${se}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
         Log.i("testLog", "search : ${se}")
