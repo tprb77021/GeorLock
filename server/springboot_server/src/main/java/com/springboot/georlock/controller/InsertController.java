@@ -10,26 +10,27 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class InsertController {
+    //등록 컨트롤러
+    
     @Autowired
     InsertService insertService;
 
-    @RequestMapping("/insert_btn")
+    @RequestMapping("/insert_btn")      //등록 페이지 이동
     public ModelAndView insertform() throws Exception {
         ModelAndView mav = new ModelAndView("insert");
         mav.addObject("empuser", insertService.emplist());
         return mav;
     }
 
-    @RequestMapping("/empSearch")
+    @RequestMapping("/empSearch")      //등록 페이지 검색 기능
     public ModelAndView empSearch(@RequestParam String textSearch) throws Exception {
         ModelAndView mav = new ModelAndView("insert");
         mav.addObject("empuser", insertService.empSearch(textSearch));
         return mav;
     }
 
-    @RequestMapping("/accessinsert")
+    @RequestMapping("/accessinsert")      //등록 기능
     public String accessinsert(Login login) throws Exception {
-        System.out.println("a :" + login);
         insertService.Accessinsert(login);
         return "redirect:access";
     }

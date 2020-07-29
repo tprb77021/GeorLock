@@ -1,69 +1,59 @@
 package com.springboot.georlock.controller;
 
 
-import com.springboot.georlock.dto.Login;
-import com.springboot.georlock.dto.Test;
-import com.springboot.georlock.svc.LoginService;
-import com.springboot.georlock.svc.TestService;
-import org.apache.coyote.Response;
 
+import com.springboot.georlock.svc.LoginService;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
 
 
 @Controller
 public class LoginController {
+    //로그인 컨트롤러
     @Autowired
     LoginService loginService;
 
 
 
 
-    @RequestMapping("/")
+    @RequestMapping("/")    // 로그인 페이지 이동
     public  String loginform(HttpServletResponse response, HttpServletRequest request) throws Exception {
-        Cookie[] cookies = request.getCookies();
+        Cookie[] cookies = request.getCookies();    // 쿠키 확인
         String page="login";
-        if(cookies!=null){
-            String empNo="";
-            String userPw="";
-            for(int i=0; i<cookies.length; i++){
-                if(cookies[i].getName().equals("empNo")){
-                    empNo= cookies[i].getValue();
+        if(cookies!=null){      //쿠키가 있으면 실행
+                String empNo="";
+                String userPw="";
+                for(int i=0; i<cookies.length; i++){
+                        if(cookies[i].getName().equals("empNo")){
+                            empNo= cookies[i].getValue();
+                        }
+                        else  if(cookies[i].getName().equals("userPw")){
+                            userPw= cookies[i].getValue();
+                        }
                 }
-                else  if(cookies[i].getName().equals("userPw")){
-                    userPw= cookies[i].getValue();
+                if(loginService.Login(empNo,userPw)==null){     //쿠키값으로 로그인 시도
+                    page="redirect:access";
                 }
-            }
-            if(loginService.Login(empNo,userPw)==null){
-                page="redirect:access";
-            }
         }
-        System.out.println("loginForm");
-
         return page;
     }
 
-    @RequestMapping("/login")
+    @RequestMapping("/login")       //로그인 기능
     public ModelAndView login(String empNo,String userPw,boolean autoLogin,HttpServletResponse response) throws Exception{
-        System.out.println("login strat");
         ModelAndView modelAndView = new ModelAndView("redirect:/access");
-        if(loginService.Login(empNo,userPw)==null){
+        if(loginService.Login(empNo,userPw)==null){         //로그인 확인
             modelAndView.setViewName("login");
             modelAndView.addObject("message", "로그인 실패");
         }
-        else if(autoLogin){
+        else if(autoLogin){         //자동 로그인 체크 여부
             loginService.autoLogin(empNo,userPw,response);
         }
-
-        System.out.println("login end");
         return modelAndView;
     }
 
@@ -74,11 +64,11 @@ public class LoginController {
 
 
 
-    @RequestMapping("/logout")
+    @RequestMapping("/logout")      //로그아웃 기능
     public String logout(HttpServletResponse response, HttpServletRequest request) {
-        System.out.println("logout");
+
         Cookie[] cookies = request.getCookies();
-        if(cookies!=null){
+        if(cookies!=null){          //쿠키 삭제 기능
             for(int i=0; i<cookies.length; i++){
                 cookies[i].setMaxAge(0);
                 cookies[i].setPath("/");
@@ -86,7 +76,6 @@ public class LoginController {
             }
         }
         return "redirect:/";
-
     }
 
 
