@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="/asset/css/access.css"/>
-    <title>등록하기</title>
+    <title>출입권한등록</title>
 </head>
 <body>
 <%--header--%>
@@ -29,17 +29,12 @@
         <p class="mainComment">등록하기</p>
 
         <%--검색창--%>
-
-        <div class="main-menu">
-            <div>
                 <form id="searchForm" action="empSearch" method="post">
                     <div class="search">
                         <input type="text"  name="textSearch" class="search_txt" placeholder="Search..."/>
                         <input type="submit" value="검색">
                     </div>
                 </form>
-            </div>
-        </div>
 
         <%--테이블--%>
         <div class="paginationBox">
@@ -92,6 +87,11 @@
                 <li>
                     <a href="record" title="record">
                         <span>출입기록</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="insert"title="insert">
+                        <span>출입권한등록</span>
                     </a>
                 </li>
                 <li>

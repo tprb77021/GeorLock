@@ -89,6 +89,11 @@
 						</a>
 					</li>
 					<li>
+						<a href="insert" title="insert">
+							<span>출입권한등록</span>
+						</a>
+					</li>
+					<li>
 						<a href="access"title="access">
 							<span>출입권한설정</span>
 						</a>
