@@ -9,23 +9,12 @@
         select empNo,username,intime,outtime from users;
     </select>
 
-    <select id="emplist"
-            resultType="com.springboot.georlock.dto.Login">
-        select A.*
-                from empusers A left outer join users B on A.empNo=B.empNo
-            where B.EMPNO is null
-
-    </select>
 
     <select id="Search" parameterType="String"
             resultType="com.springboot.georlock.dto.Login">
         select empNo,username,intime,outtime from users where empNo LIKE  #{textSearch} or username LIKE #{textSearch};
     </select>
 
-    <select id="empSearch" parameterType="String"
-            resultType="com.springboot.georlock.dto.Login">
-        SELECT t.* from ( select A.* from empusers A left outer join users B on A.empNo=B.empNo where B.EMPNO is NULL ) t where empNo LIKE  #{textSearch} or username LIKE #{textSearch}
-            </select>
 
     <delete id="delete" parameterType="String">
         delete from users where empNo = #{empNo} ;
@@ -34,8 +23,6 @@
         update users set intime=#{intime} , outtime=#{outtime}  where empNo = #{empNo}
     </update>
 
-    <insert id="insert" parameterType ="com.springboot.georlock.dto.Login">
-        INSERT INTO users() VALUES(#{empNo},#{username},#{userPw},#{intime},#{outtime},#{usertype});
-    </insert>
+
 
 </mapper>

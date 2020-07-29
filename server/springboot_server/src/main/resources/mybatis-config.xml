@@ -20,9 +20,6 @@
 		</environment>
 	</environments>
 
-	<mappers>
-		<mapper resource="student_mapper.xml"/>
-		<mapper resource="lastGrade_mapper.xml"/>
-	</mappers>
+
 
 </configuration>

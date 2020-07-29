@@ -90,7 +90,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="insert"title="insert">
+                    <a href="insert_btn"title="insert">
                         <span>출입권한등록</span>
                     </a>
                 </li>

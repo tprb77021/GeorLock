@@ -43,12 +43,7 @@ public class AccessController {
         return mav;
     }
 
-    @RequestMapping("/empSearch")
-    public ModelAndView empSearch(@RequestParam String textSearch) throws Exception {
-        ModelAndView mav = new ModelAndView("insert");
-        mav.addObject("empuser", accessService.empSearch(textSearch));
-        return mav;
-    }
+
 
     @RequestMapping("/accessdelete")
     public String accessdelete(@RequestParam String empNo) throws Exception {
@@ -77,19 +72,6 @@ public class AccessController {
         return "close";
     }
 
-    @RequestMapping("/insert_btn")
-    public ModelAndView insertform() throws Exception {
-        ModelAndView mav = new ModelAndView("insert");
-        mav.addObject("empuser", accessService.emplist());
-        return mav;
-    }
 
-
-    @RequestMapping("/accessinsert")
-    public String accessinsert(Login login) throws Exception {
-        System.out.println("a :" + login);
-        accessService.Accessinsert(login);
-        return "redirect:access";
-    }
 
 }
