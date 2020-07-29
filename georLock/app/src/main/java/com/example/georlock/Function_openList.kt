@@ -1,22 +1,18 @@
 package com.example.georlock
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.ArrayAdapter
-import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_authorization_list.*
 import kotlinx.android.synthetic.main.activity_function_open_list.*
-import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONArray
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
-class function_openList : AppCompatActivity() {
+class Function_openList : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_function_open_list)
@@ -52,7 +48,7 @@ class function_openList : AppCompatActivity() {
 
 
     fun UpdateMainLog():ArrayList<String>{
-        val url = URL("${static.server_url}/openlist")
+        val url = URL("${Static.server_url}/openlist")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
         var list:ArrayList<String> = arrayListOf()
@@ -72,7 +68,7 @@ class function_openList : AppCompatActivity() {
     fun searchMainLog(search:String,date1:String,date2:String):ArrayList<String>{
 
         var se=  URLEncoder.encode(search, "UTF-8");
-        val url = URL("${static.server_url}/openSearch?search=${se}")
+        val url = URL("${Static.server_url}/openSearch?search=${se}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
         Log.i("testLog", "search : ${se}")

@@ -1,7 +1,6 @@
 package com.springboot.georlock.svc;
 
 import com.springboot.georlock.dto.Login;
-import com.springboot.georlock.mapper.AccessMapper;
 import com.springboot.georlock.mapper.InsertMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

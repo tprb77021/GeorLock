@@ -5,13 +5,10 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.os.SystemClock
 import android.util.Log
 import android.view.MenuItem
-import android.widget.Button
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_user_main.*
 import java.net.HttpURLConnection
 import java.net.URL
 
@@ -22,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
 
         button2.setOnClickListener {
-            val intent = Intent(this, function_openList::class.java)
+            val intent = Intent(this, Function_openList::class.java)
             startActivity(intent)
         }
 
@@ -67,7 +64,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun open(empNo:String):String{
-        val url = URL("${static.server_url}/open?empNo=${empNo}")
+        val url = URL("${Static.server_url}/open?empNo=${empNo}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
@@ -80,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun UpdateMainLog(empNo:String,userPw:String):String{
-        val url = URL("${static.server_url}/login?empNo=${empNo}&userPw=${userPw}")
+        val url = URL("${Static.server_url}/login?empNo=${empNo}&userPw=${userPw}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 

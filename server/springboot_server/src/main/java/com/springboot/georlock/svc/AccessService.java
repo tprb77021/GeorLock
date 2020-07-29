@@ -3,14 +3,12 @@ package com.springboot.georlock.svc;
 
 import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.mapper.AccessMapper;
-
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletResponse;
 import java.util.List;
 
+@Slf4j
 @Service
 public class AccessService {
 

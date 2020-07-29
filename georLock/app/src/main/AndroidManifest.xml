@@ -14,7 +14,7 @@
         <activity android:name=".Accessmodity"/>
         <activity android:name=".UserEdit"/>
         <activity android:name=".UserMain"/>
-        <activity android:name=".function_openList" />
+        <activity android:name=".Function_openList" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Login" />
         <activity android:name=".Loading">

@@ -4,14 +4,15 @@ package com.springboot.georlock.svc;
 import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.mapper.LoginMapper;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
 
+@Slf4j
 @Service
 public class LoginService {
 
@@ -19,8 +20,8 @@ public class LoginService {
     LoginMapper loginMapper;
 
     public Login Login(String empNo,String userPw) throws Exception{
-        Login loginsuccess= new Login();
 
+        Login loginsuccess= new Login();
         Login login=new Login();
         login.setEmpNo(empNo);
         login.setUserPw(userPw);

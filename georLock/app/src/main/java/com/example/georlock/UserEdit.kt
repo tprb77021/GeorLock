@@ -5,15 +5,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.ArrayAdapter
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_authorization_list.*
-import kotlinx.android.synthetic.main.activity_function_open_list.*
 import kotlinx.android.synthetic.main.activity_user_edit.*
-import kotlinx.android.synthetic.main.activity_user_main.*
 import java.net.HttpURLConnection
 import java.net.URL
-import java.net.URLEncoder
 
 class UserEdit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +55,7 @@ class UserEdit : AppCompatActivity() {
     }
 
     fun UpdateMainLog(empNo:String,userPw:String):String{
-        val url = URL("${static.server_url}/userupdate?empNo=${empNo}&userPw=${userPw}")
+        val url = URL("${Static.server_url}/userupdate?empNo=${empNo}&userPw=${userPw}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 

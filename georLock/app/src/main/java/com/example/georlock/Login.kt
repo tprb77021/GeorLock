@@ -1,20 +1,12 @@
 package com.example.georlock
 
-import android.content.Context
 import android.content.Intent
-import android.graphics.drawable.DrawableContainer
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.AttributeSet
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.widget.Button
 import android.widget.Toast
-import com.example.georlock.static.Companion.server_url
+import com.example.georlock.Static.Companion.server_url
 import kotlinx.android.synthetic.main.activity_login.*
-import org.json.JSONArray
-import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
 

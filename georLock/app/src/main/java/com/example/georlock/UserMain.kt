@@ -5,11 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.ArrayAdapter
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_authorization_list.*
-import kotlinx.android.synthetic.main.activity_function_open_list.*
-import kotlinx.android.synthetic.main.activity_user_edit.*
 import kotlinx.android.synthetic.main.activity_user_main.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -58,7 +54,7 @@ class UserMain : AppCompatActivity() {
     }
 
     fun opencall(empNo:String):String{
-        val url = URL("${static.server_url}/opencall?empNo=${empNo}")
+        val url = URL("${Static.server_url}/opencall?empNo=${empNo}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
