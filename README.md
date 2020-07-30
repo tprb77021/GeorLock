@@ -19,6 +19,32 @@
 ## 사용한 기술셋
 ### RPI
 ### Android
+__로그인 화면__
+등록된 사원번호, 비밀번호 입력시 서버에 값 전송 후 회신 값과 비교하여 성공, 실패 
+경로 : com.example.georlock.Login
+
+__<관리자>
+출입기록 __
+- 조회, 검색 기능 반영 
+경로 : com.example.georlock.function_openList
+
+__출입권한설정__ 
+- 조회 기능 반영
+경로 : com.example.georlock.AuthorizationList
+
+- 수정, 삭제 기능 반영
+경로 : com.example.georlock.Accessmodity
+
+__출입문 개폐 기능 반영__
+경로 : com.example.georlock.MainActivity
+
+__<사용자>
+비밀번호 변경 기능 반영__
+경로 : com.example.georlock.AuthorizationList
+
+__출입문 개폐요청 기능 반영__
+경로 : com.example.georlock.UserMain
+
 ### Springboot
 * __로그인 화면(/)__
 등록된 사원번호, 비밀번호 입력시 DB에서 값 확인 후 성공, 실패 (empNo, userPw -> 임의 설정 테이블명 : users)
