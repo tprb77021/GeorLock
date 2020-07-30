@@ -8,6 +8,15 @@
         select * from users where empNo = #{empNo} and userPw = #{userPw};
     </select>
 
+    <select id="getToken" parameterType ="String"
+            resultType="String">
+        select token from users where empNo = #{empNo} ;
+    </select>
+    <update id="updateToken" parameterType ="com.springboot.georlock.dto.Login">
+        update users set token=${token} where empNo = #{empNo} ;
+    </update>
+
+
     <update id="userUpdate" parameterType ="com.springboot.georlock.dto.Login">
         update users set  userPw=#{userPw}  where empNo = #{empNo}
     </update>

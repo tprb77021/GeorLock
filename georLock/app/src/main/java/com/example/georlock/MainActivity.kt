@@ -8,6 +8,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_main.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -29,6 +30,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         button4.setOnClickListener {
+            MyApplication.prefs.delete("empNo")
+            MyApplication.prefs.delete("userPw")
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_user_main.*
 import java.net.HttpURLConnection
 import java.net.URL
@@ -33,7 +34,12 @@ class UserMain : AppCompatActivity() {
             intent.putExtra("infoss", tmp)
             startActivity(intent)
         }
-
+        logout.setOnClickListener {
+            MyApplication.prefs.delete("empNo")
+            MyApplication.prefs.delete("userPw")
+            val intent = Intent(this, Login::class.java)
+            startActivity(intent)
+        }
 
         opencall.setOnClickListener {
             Toast.makeText(this, "문이 열림 요청함.", Toast.LENGTH_SHORT).show()

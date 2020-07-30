@@ -53,4 +53,16 @@ public class LoginService {
         loginMapper.userUpdate(login);
 
     }
+
+    public String getToken(String empNo) {
+      return   loginMapper.getToken(empNo);
+    }
+
+    public void updateToken(String token,String empNo) throws Exception {
+        Login login = new Login();
+        login.setToken(token);
+        login.setEmpNo(empNo);
+
+        loginMapper.updateToken(login);
+    }
 }

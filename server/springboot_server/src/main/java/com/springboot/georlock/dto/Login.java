@@ -14,4 +14,6 @@ public class Login {
        private String intime ="00:00";
        private String outtime ="00:00";
        private String usertype ="1";
+       private String token ;
+
 }
