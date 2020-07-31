@@ -12,25 +12,34 @@ import java.net.URL
 
 class Login : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         var empNo=MyApplication.prefs.getString("empNo", "no")
         var userPw=MyApplication.prefs.getString("userPw", "no")
+        var temp:String=""
+        if(intent.hasExtra("token")){
+           temp = intent.getStringExtra("token").toString()
+        }
         if(empNo != "no" && userPw != "no" ){
-            loginmethod(empNo,userPw)
+            loginmethod(empNo,userPw,"${temp}")
         }
 
         login_button.setOnClickListener {
-            loginmethod("${username.text}","${password.text}")
+
+            loginmethod("${username.text}","${password.text}","${temp}")
         }
     }
-    fun loginmethod(empNo:String,userPw:String){
+
+
+    fun loginmethod(empNo:String,userPw:String,tokens:String){
         Log.i("testLog", "checkBox u:${checkBox.isChecked}")
         var tmp:String = ""
         Log.i("testLog", "loginclick u:${username.text}p:${password.text}")
+
         Thread(){
-            tmp = UpdateMainLog(empNo,userPw)
+            tmp = UpdateMainLog(empNo,userPw,tokens)
             var tmps:List<String> = tmp.split("@");
             runOnUiThread{
                 Log.i("testLog", "loginclick : ${tmp}")
@@ -67,8 +76,8 @@ class Login : AppCompatActivity() {
 
     }
 
-    fun UpdateMainLog(empNo:String,userPw:String):String{
-        val url = URL("${server_url}/login?empNo=${empNo}&userPw=${userPw}")
+    fun UpdateMainLog(empNo:String,userPw:String,tokens:String):String{
+        val url = URL("${server_url}/login?empNo=${empNo}&userPw=${userPw}&tokens=${tokens}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 

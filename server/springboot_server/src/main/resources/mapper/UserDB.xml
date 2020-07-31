@@ -10,10 +10,11 @@
 
     <select id="getToken" parameterType ="String"
             resultType="String">
-        select token from users where empNo = #{empNo} ;
+        select token from users where empNo = #{empNo};
     </select>
+
     <update id="updateToken" parameterType ="com.springboot.georlock.dto.Login">
-        update users set token=${token} where empNo = #{empNo} ;
+        update users set token=#{token} where empNo = #{empNo} ;
     </update>
 
 

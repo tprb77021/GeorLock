@@ -31,7 +31,7 @@ class Function_openList : AppCompatActivity() {
 
         search_open_button.setOnClickListener {
             Thread(){
-                var list:ArrayList<String> = searchMainLog("${search_open.text.toString()}","${search_opendate1.text.toString()}","${search_opendate2.text.toString()}")
+                 var list:ArrayList<String> = searchMainLog("${search_open.text.toString()}","${search_opendate1.text.toString()}","${search_opendate2.text.toString()}")
                 runOnUiThread{
                     Log.i("testLog", "loginclick : ${list}")
                     openlistview.adapter = ArrayAdapter<String>(
@@ -68,7 +68,7 @@ class Function_openList : AppCompatActivity() {
     fun searchMainLog(search:String,date1:String,date2:String):ArrayList<String>{
 
         var se=  URLEncoder.encode(search, "UTF-8");
-        val url = URL("${Static.server_url}/openSearch?search=${se}")
+        val url = URL("${Static.server_url}/openSearch?search=${se}&startDate=${date1}&endDate=${date2}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
         Log.i("testLog", "search : ${se}")
@@ -78,7 +78,7 @@ class Function_openList : AppCompatActivity() {
             var arr: JSONArray = JSONArray(txt)
             for(i in 0 until arr.length()){
                 var obj: JSONObject = arr.get(i) as JSONObject
-                list.add("사번 : ${ obj["empNo"].toString()} \n이름 : ${ obj["username"].toString()} \n출입 시간 : ${ obj["intime"].toString()} ~ ${ obj["outtime"].toString()}")
+                list.add("사번 : ${ obj["empNo"].toString()} 이름 : ${ obj["username"].toString()} \n출입 시간 : ${ obj["intime"].toString()}")
             }
             return list
         } else return list

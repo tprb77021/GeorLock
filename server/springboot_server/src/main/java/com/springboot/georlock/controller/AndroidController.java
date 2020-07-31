@@ -42,7 +42,6 @@ public class AndroidController {
     AccessService accessService;
     @Autowired
     AndroidPushNotificationService androidPushNotificationService;
-
     Logger logger = LoggerFactory.getLogger(this.getClass());
     @GetMapping( value = "/q" )
     public List<Login> query() throws Exception{
@@ -59,7 +58,7 @@ public class AndroidController {
     public List<Enteremp> openSearch(String search,String startDate,String endDate) throws Exception{
         Dates dates=new Dates();
         dates.setStartDate(startDate);
-        dates.setEndDate(startDate);
+        dates.setEndDate(endDate);
         dates.setTextSearch(search);
         return  recordService.getRecordSearch(dates);
     }
@@ -91,15 +90,17 @@ public class AndroidController {
 
     //로그인
     @GetMapping("/login")
-    public String login(String empNo, String userPw,String token) throws Exception{
+    public String login(String empNo, String userPw,String tokens) throws Exception{
         Login login=loginService.Login(empNo,userPw);
 
         String log="0실패";
         if(login.getUsertype().equals("1")){
             log="1성공@"+login.getIntime()+"@"+login.getOuttime()+"@"+login.getEmpNo();
+            loginService.updateToken(tokens,empNo);
         }
         else if(login.getUsertype().equals("2")){
             log="2성공@"+login.getIntime()+"@"+login.getOuttime()+"@"+login.getEmpNo();
+            loginService.updateToken(tokens,empNo);
         }
         return log;
     }
@@ -117,7 +118,7 @@ public class AndroidController {
     // 문 개폐
     @GetMapping("/open")
     public String open(String empNo) throws Exception{
-        System.out.println("open :"+empNo);
+
         return  "openSuccess";
     }
 
@@ -129,7 +130,7 @@ public class AndroidController {
     @GetMapping("/opencall")
     public @ResponseBody
     ResponseEntity<String> opencall(String empNo) throws JSONException, InterruptedException, UnsupportedEncodingException {
-        String token=loginService.getToken(empNo);
+        String token=loginService.getToken("11110000");
 
         String notifications =
                 AndroidPushPeriodicNotifications.PeriodicNotificationJson(token);

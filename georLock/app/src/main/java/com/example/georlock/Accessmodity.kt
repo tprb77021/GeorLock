@@ -70,7 +70,6 @@ class Accessmodity : AppCompatActivity() {
             val url = URL("${Static.server_url}/update?empNo=${empNo}&intime=${intime}&outtime=${outtime}")
             val conn = url.openConnection() as HttpURLConnection // casting
             Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
-
             if (conn.responseCode == 200) {
                 val txt = url.readText()
                 /*val arr = JSONArray(txt)

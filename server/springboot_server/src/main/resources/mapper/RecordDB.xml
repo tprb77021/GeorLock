@@ -9,7 +9,7 @@
     </select>
     <select id="getSearch" parameterType="com.springboot.georlock.dto.Dates"
             resultType="com.springboot.georlock.dto.Enteremp">
-        select * from enteremp where (intime >= #{startDate} AND #{endDate} >= intime) and username LIKE #{textSearch} ;
+        select * from enteremp where (intime >= #{startDate} AND #{endDate} >= intime) and (username LIKE #{textSearch} or empNo LIKE #{textSearch}) ;
     </select>
 
 

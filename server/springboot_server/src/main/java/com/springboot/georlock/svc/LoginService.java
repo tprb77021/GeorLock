@@ -49,7 +49,6 @@ public class LoginService {
         Login login=new Login();
         login.setEmpNo(empNo);
         login.setUserPw(userPw);
-
         loginMapper.userUpdate(login);
 
     }
@@ -62,7 +61,7 @@ public class LoginService {
         Login login = new Login();
         login.setToken(token);
         login.setEmpNo(empNo);
-
+        System.out.println(token);
         loginMapper.updateToken(login);
     }
 }

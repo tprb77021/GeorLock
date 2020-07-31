@@ -49,7 +49,6 @@ class UserMain : AppCompatActivity() {
                 var list: String = opencall( "${infos?.get(2)}")
                 Log.i("testLog", "opencall : ${infos?.get(2)} ")
                 runOnUiThread {
-                    Log.i("testLog", "loginedededed : ${list}")
                 }
             }.start()
 
@@ -60,6 +59,7 @@ class UserMain : AppCompatActivity() {
     }
 
     fun opencall(empNo:String):String{
+
         val url = URL("${Static.server_url}/opencall?empNo=${empNo}")
         val conn = url.openConnection() as HttpURLConnection // casting
         Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
@@ -70,6 +70,7 @@ class UserMain : AppCompatActivity() {
             var item = arr*/
             return "${txt}"
         } else return "null"
+
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {

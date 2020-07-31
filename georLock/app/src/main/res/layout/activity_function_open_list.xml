@@ -80,7 +80,8 @@
                 android:layout_height="37dp"
                 android:layout_weight="1"
                 android:layout_gravity="center"
-                android:background="@drawable/line" />
+                android:background="@drawable/line"
+               />
 
             <Button
                 android:id="@+id/search_open_button"
