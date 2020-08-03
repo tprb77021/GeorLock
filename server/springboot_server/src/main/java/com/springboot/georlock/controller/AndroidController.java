@@ -42,6 +42,7 @@ public class AndroidController {
     AccessService accessService;
     @Autowired
     AndroidPushNotificationService androidPushNotificationService;
+
     Logger logger = LoggerFactory.getLogger(this.getClass());
     @GetMapping( value = "/q" )
     public List<Login> query() throws Exception{
@@ -111,16 +112,21 @@ public class AndroidController {
         loginService.userUpdate(empNo,userPw);
     }
 
+    @GetMapping(value ="/door")
+    public String Door() throws Exception{
+        return loginService.getdoor();
+    }
+
 
     //출입 요청
 
 
     // 문 개폐
-    @GetMapping("/open")
+  /*  @GetMapping("/open")
     public String open(String empNo) throws Exception{
 
         return  "openSuccess";
-    }
+    }*/
 
 
 
@@ -129,17 +135,14 @@ public class AndroidController {
     //    @Scheduled(fixedRate = 10000)
     @GetMapping("/opencall")
     public @ResponseBody
-    ResponseEntity<String> opencall(String empNo) throws JSONException, InterruptedException, UnsupportedEncodingException {
-        String token=loginService.getToken("11110000");
-
+    ResponseEntity<String> opencall(String empNo) throws JSONException, InterruptedException {
+        Login token=loginService.getToken("11110000");
         String notifications =
-                AndroidPushPeriodicNotifications.PeriodicNotificationJson(token);
+                AndroidPushPeriodicNotifications.PeriodicNotificationJson(token,1,"");
         HttpEntity<String> request = new HttpEntity<>(notifications);
-
         CompletableFuture<String> pushNotification =
                 androidPushNotificationService.send(request);
         CompletableFuture.allOf(pushNotification).join();
-
         try {
             String firebaseResponse = pushNotification.get();
             return new ResponseEntity<>(firebaseResponse, HttpStatus.OK);
@@ -149,10 +152,59 @@ public class AndroidController {
         } catch (ExecutionException e) {
             logger.debug("execution error!");
         }
-
         return new ResponseEntity<>("Push Notification ERROR!",
                 HttpStatus.BAD_REQUEST);
     }
+
+
+    @GetMapping("/open")
+    public @ResponseBody
+    ResponseEntity<String> open(String empNo) throws JSONException, InterruptedException {
+        Login token=loginService.getToken("11110000");
+        loginService.setdoor(1);
+        String notifications =
+                AndroidPushPeriodicNotifications.PeriodicNotificationJson(token,2,loginService.getdoor());
+        HttpEntity<String> request = new HttpEntity<>(notifications);
+        CompletableFuture<String> pushNotification =
+                androidPushNotificationService.send(request);
+        CompletableFuture.allOf(pushNotification).join();
+        try {
+            String firebaseResponse = pushNotification.get();
+            return new ResponseEntity<>(firebaseResponse, HttpStatus.OK);
+        } catch (InterruptedException e) {
+            logger.debug("got interrupted!");
+            throw new InterruptedException();
+        } catch (ExecutionException e) {
+            logger.debug("execution error!");
+        }
+        return new ResponseEntity<>("Push Notification ERROR!",
+                HttpStatus.BAD_REQUEST);
+    }
+
+    @GetMapping("/close")
+    public @ResponseBody
+    ResponseEntity<String> close() throws JSONException, InterruptedException {
+        Login token=loginService.getToken("11110000");
+        loginService.setdoor(0);
+        String notifications =
+                AndroidPushPeriodicNotifications.PeriodicNotificationJson(token,2,loginService.getdoor());
+        HttpEntity<String> request = new HttpEntity<>(notifications);
+        CompletableFuture<String> pushNotification =
+                androidPushNotificationService.send(request);
+        CompletableFuture.allOf(pushNotification).join();
+        try {
+            String firebaseResponse = pushNotification.get();
+            return new ResponseEntity<>(firebaseResponse, HttpStatus.OK);
+        } catch (InterruptedException e) {
+            logger.debug("got interrupted!");
+            throw new InterruptedException();
+        } catch (ExecutionException e) {
+            logger.debug("execution error!");
+        }
+        return new ResponseEntity<>("Push Notification ERROR!",
+                HttpStatus.BAD_REQUEST);
+    }
+
 
 
 }

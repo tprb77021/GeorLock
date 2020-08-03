@@ -9,9 +9,26 @@
     </select>
 
     <select id="getToken" parameterType ="String"
-            resultType="String">
-        select token from users where empNo = #{empNo};
+            resultType="com.springboot.georlock.dto.Login">
+        select empNo,token,username from users where empNo = #{empNo};
     </select>
+    <select id="getdoor"
+            resultType="String">
+        select * from door;
+    </select>
+    <select id="doorOpenTry" parameterType ="String"
+            resultType="com.springboot.georlock.dto.Login">
+        select * from users where nfc=#{cardValue};
+    </select>
+    <insert id="enteremp" parameterType ="com.springboot.georlock.dto.Login">
+       INSERT INTO enteremp(intime,username,empNo) VALUES(#{empNo},#{username},#{intime});
+    </insert>
+
+
+
+    <update id="setdoor" parameterType ="Int">
+        update door set door=#{i};
+    </update>
 
     <update id="updateToken" parameterType ="com.springboot.georlock.dto.Login">
         update users set token=#{token} where empNo = #{empNo} ;

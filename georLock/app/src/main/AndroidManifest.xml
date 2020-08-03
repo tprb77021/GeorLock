@@ -11,6 +11,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:name=".MyApplication">
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/logo" />
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/loginButton"/>
         <activity android:name=".AuthorizationList"/>
         <activity android:name=".Accessmodity"/>
         <activity android:name=".UserEdit"/>
@@ -31,6 +37,8 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+
 
 
     </application>

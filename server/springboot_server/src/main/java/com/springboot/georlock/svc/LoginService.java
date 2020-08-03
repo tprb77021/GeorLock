@@ -1,6 +1,7 @@
 package com.springboot.georlock.svc;
 
 
+import com.springboot.georlock.dto.Dates;
 import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.mapper.LoginMapper;
 
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Slf4j
 @Service
@@ -53,7 +56,7 @@ public class LoginService {
 
     }
 
-    public String getToken(String empNo) {
+    public Login getToken(String empNo) {
       return   loginMapper.getToken(empNo);
     }
 
@@ -63,5 +66,28 @@ public class LoginService {
         login.setEmpNo(empNo);
         System.out.println(token);
         loginMapper.updateToken(login);
+    }
+
+    public String getdoor() {
+        return loginMapper.getdoor();
+    }
+
+    public void setdoor(int i) {
+        loginMapper.setdoor(i);
+    }
+
+    public String doorOpenTry(String cardValue) {
+      Login login = loginMapper.doorOpenTry(cardValue);
+      Date time=new Date();
+      String log= "0";
+      SimpleDateFormat format1 = new SimpleDateFormat ( "HHmm");
+      SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm");
+      int time1 = Integer.parseInt(format1.format(time));
+       if(time1 >= Integer.parseInt(login.getIntime().replace(":","")) && time1 <= Integer.parseInt(login.getOuttime().replace(":","")) ){
+           log="1";
+           login.setIntime(format2.format(time));
+           loginMapper.enteremp(login);
+       }
+      return log;
     }
 }

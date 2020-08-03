@@ -5,11 +5,19 @@ import org.json.JSONException;
 
 
 public interface LoginMapper {
-    public  String getToken(String empNo) ;
+    public  Login getToken(String empNo) ;
 
     public Login Login(Login login) throws Exception;
 
     public void userUpdate(Login login) throws Exception;
 
     void updateToken(Login login) throws Exception;
+
+    String getdoor();
+
+    void setdoor(int i);
+
+    public Login doorOpenTry(String cardValue);
+
+    void enteremp(Login login);
 }
