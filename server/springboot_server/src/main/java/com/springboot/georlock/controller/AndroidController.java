@@ -118,16 +118,6 @@ public class AndroidController {
     }
 
 
-    //출입 요청
-
-
-    // 문 개폐
-  /*  @GetMapping("/open")
-    public String open(String empNo) throws Exception{
-
-        return  "openSuccess";
-    }*/
-
 
 
 
@@ -159,33 +149,20 @@ public class AndroidController {
 
     @GetMapping("/open")
     public @ResponseBody
-    ResponseEntity<String> open(String empNo) throws JSONException, InterruptedException {
-        Login token=loginService.getToken("11110000");
-        loginService.setdoor(1);
-        String notifications =
-                AndroidPushPeriodicNotifications.PeriodicNotificationJson(token,2,loginService.getdoor());
-        HttpEntity<String> request = new HttpEntity<>(notifications);
-        CompletableFuture<String> pushNotification =
-                androidPushNotificationService.send(request);
-        CompletableFuture.allOf(pushNotification).join();
-        try {
-            String firebaseResponse = pushNotification.get();
-            return new ResponseEntity<>(firebaseResponse, HttpStatus.OK);
-        } catch (InterruptedException e) {
-            logger.debug("got interrupted!");
-            throw new InterruptedException();
-        } catch (ExecutionException e) {
-            logger.debug("execution error!");
-        }
-        return new ResponseEntity<>("Push Notification ERROR!",
-                HttpStatus.BAD_REQUEST);
+    void open(String empNo) throws JSONException, InterruptedException {
+        loginService.setdoor(1,empNo);
+        send();
     }
 
     @GetMapping("/close")
     public @ResponseBody
-    ResponseEntity<String> close() throws JSONException, InterruptedException {
-        Login token=loginService.getToken("11110000");
+    void close() throws JSONException, InterruptedException {
         loginService.setdoor(0);
+        send();
+    }
+
+    public  ResponseEntity<String> send() throws JSONException, InterruptedException{
+        Login token=loginService.getToken("11110000");
         String notifications =
                 AndroidPushPeriodicNotifications.PeriodicNotificationJson(token,2,loginService.getdoor());
         HttpEntity<String> request = new HttpEntity<>(notifications);
@@ -204,9 +181,6 @@ public class AndroidController {
         return new ResponseEntity<>("Push Notification ERROR!",
                 HttpStatus.BAD_REQUEST);
     }
-
-
-
 }
 
 

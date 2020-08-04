@@ -58,9 +58,9 @@
 
 
 
-			<c:forEach items="${recordlist}" var="list">
+			<c:forEach items="${recordlist}" var="list" varStatus="status">
 				<tr>
-					<td></td>
+					<td>${status.count}</td>
 					<td>${list.intime}</td>
 					<td>${list.empNo}</td>
 					<td>${list.username}</td>

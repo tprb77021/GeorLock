@@ -7,6 +7,10 @@
             resultType="com.springboot.georlock.dto.Login">
         select * from users where empNo = #{empNo} and userPw = #{userPw};
     </select>
+    <select id="selectuser" parameterType ="String"
+            resultType="com.springboot.georlock.dto.Login">
+        select * from users where empNo = #{empNo};
+    </select>
 
     <select id="getToken" parameterType ="String"
             resultType="com.springboot.georlock.dto.Login">
@@ -21,7 +25,7 @@
         select * from users where nfc=#{cardValue};
     </select>
     <insert id="enteremp" parameterType ="com.springboot.georlock.dto.Login">
-       INSERT INTO enteremp(intime,username,empNo) VALUES(#{empNo},#{username},#{intime});
+       INSERT INTO enteremp(intime,username,empNo) VALUES(#{intime},#{username},#{empNo});
     </insert>
 
 

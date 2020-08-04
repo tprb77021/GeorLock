@@ -78,42 +78,34 @@ class MainActivity : AppCompatActivity() {
 
     fun open(empNo:String):String{
         val url = URL("${Static.server_url}/open?empNo=${empNo}")
-        val conn = url.openConnection() as HttpURLConnection // casting
-        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
-        if(conn.responseCode == 200){
             val txt = url.readText()
             /*val arr = JSONArray(txt)
             var item = arr*/
             return "${txt}"
-        } else return "null"
+
     }
 
     fun UpdateMainLog(empNo:String,userPw:String):String{
         val url = URL("${Static.server_url}/login?empNo=${empNo}&userPw=${userPw}")
-        val conn = url.openConnection() as HttpURLConnection // casting
-        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
-        if(conn.responseCode == 200){
             val txt = url.readText()
             /*val arr = JSONArray(txt)
             var item = arr*/
             return "${txt}"
-        } else return "null"
+
     }
 
 
 
     fun Door():String{
         val url = URL("${Static.server_url}/door")
-        val conn = url.openConnection() as HttpURLConnection // casting
-        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
-        if(conn.responseCode == 200){
+
             val txt = url.readText()
             /*val arr = JSONArray(txt)
             var item = arr*/
             return "${txt}"
-        } else return "null"
+
     }
 
 

@@ -39,7 +39,7 @@ public class AndroidPushNotificationService {
         restTemplate.setInterceptors(interceptors);
 
         String firebaseResponse = restTemplate.postForObject(firebase_api_url, entity, String.class);
-
+        System.out.println(firebaseResponse);
         return CompletableFuture.completedFuture(firebaseResponse);
     }
 }

@@ -1,19 +1,24 @@
 package com.springboot.georlock.svc;
 
 
-import com.springboot.georlock.dto.Dates;
+import com.springboot.georlock.controller.AndroidController;
 import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.mapper.LoginMapper;
-
 import lombok.extern.slf4j.Slf4j;
+import org.json.JSONException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestParam;
-
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.ExecutionException;
 
 @Slf4j
 @Service
@@ -21,7 +26,7 @@ public class LoginService {
 
     @Autowired
     LoginMapper loginMapper;
-
+    Logger logger = LoggerFactory.getLogger(this.getClass());
     public Login Login(String empNo,String userPw) throws Exception{
 
         Login loginsuccess= new Login();
@@ -72,11 +77,20 @@ public class LoginService {
         return loginMapper.getdoor();
     }
 
+    public void setdoor(int i,String empNo) {
+        loginMapper.setdoor(i);
+       if(!(empNo.equals("no")) ){
+        Date time=new Date();
+        SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm");
+        Login login = loginMapper.selectuser(empNo);
+        login.setIntime(format2.format(time));
+        loginMapper.enteremp(login);
+       }
+    }
     public void setdoor(int i) {
         loginMapper.setdoor(i);
     }
-
-    public String doorOpenTry(String cardValue) {
+    public String doorOpenTry(String cardValue) throws JSONException, InterruptedException {
       Login login = loginMapper.doorOpenTry(cardValue);
       Date time=new Date();
       String log= "0";
@@ -90,4 +104,5 @@ public class LoginService {
        }
       return log;
     }
+
 }

@@ -1,17 +1,11 @@
 package com.springboot.georlock.svc;
 
 import com.springboot.georlock.dto.Login;
-import com.springboot.georlock.mapper.LoginMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,8 +23,8 @@ public class AndroidPushPeriodicNotifications {
 
     public static String PeriodicNotificationJson(Login tokens,int type,String door) throws JSONException{
         LocalDate localDate = LocalDate.now();
-
-        String name = "empNo :"+tokens.getEmpNo()+" name :"+tokens.getUsername()+"님의 open please";
+       /* " name :"+tokens.getUsername()+"님의*/
+        String name = "empNo :"+tokens.getEmpNo()+" open please";
         String title= "Georlokc!";
         String sampleData[] = {tokens.getToken()};
         if(type==2){
@@ -66,7 +60,7 @@ public class AndroidPushPeriodicNotifications {
         body.put("notification", notification);
 
 
-        System.out.println(body.toString());
+
 
         return body.toString();
     }

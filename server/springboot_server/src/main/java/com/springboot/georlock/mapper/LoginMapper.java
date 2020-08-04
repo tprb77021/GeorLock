@@ -20,4 +20,6 @@ public interface LoginMapper {
     public Login doorOpenTry(String cardValue);
 
     void enteremp(Login login);
+
+    Login selectuser(String empNo);
 }
