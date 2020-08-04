@@ -61,15 +61,11 @@ class UserMain : AppCompatActivity() {
     fun opencall(empNo:String):String{
 
         val url = URL("${Static.server_url}/opencall?empNo=${empNo}")
-        val conn = url.openConnection() as HttpURLConnection // casting
-        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
-        if(conn.responseCode == 200){
             val txt = url.readText()
             /*val arr = JSONArray(txt)
             var item = arr*/
             return "${txt}"
-        } else return "null"
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

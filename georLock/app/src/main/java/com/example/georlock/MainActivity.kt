@@ -58,17 +58,13 @@ class MainActivity : AppCompatActivity() {
 
             Toast.makeText(this, "문이 열렸습니다.", Toast.LENGTH_SHORT).show()
             Thread() {
-
                 var  temp =""
                 if(intent.hasExtra("infos")){
                     temp = intent.getStringExtra("infos").toString()
                 }
                 var list: String = open( "${temp}")
-
                 runOnUiThread {
-
                     }
-
             }.start()
         }
 

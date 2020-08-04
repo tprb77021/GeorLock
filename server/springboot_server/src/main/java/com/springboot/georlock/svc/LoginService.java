@@ -17,6 +17,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
 
@@ -81,7 +82,7 @@ public class LoginService {
         loginMapper.setdoor(i);
        if(!(empNo.equals("no")) ){
         Date time=new Date();
-        SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm");
+        SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm", Locale.KOREA);
         Login login = loginMapper.selectuser(empNo);
         login.setIntime(format2.format(time));
         loginMapper.enteremp(login);
@@ -94,8 +95,8 @@ public class LoginService {
       Login login = loginMapper.doorOpenTry(cardValue);
       Date time=new Date();
       String log= "0";
-      SimpleDateFormat format1 = new SimpleDateFormat ( "HHmm");
-      SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm");
+      SimpleDateFormat format1 = new SimpleDateFormat ( "HHmm", Locale.KOREA);
+      SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm", Locale.KOREA);
       int time1 = Integer.parseInt(format1.format(time));
        if(time1 >= Integer.parseInt(login.getIntime().replace(":","")) && time1 <= Integer.parseInt(login.getOuttime().replace(":","")) ){
            log="1";

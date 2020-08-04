@@ -49,19 +49,18 @@ class Function_openList : AppCompatActivity() {
 
     fun UpdateMainLog():ArrayList<String>{
         val url = URL("${Static.server_url}/openlist")
-        val conn = url.openConnection() as HttpURLConnection // casting
-        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
+
         var list:ArrayList<String> = arrayListOf()
-        if(conn.responseCode == 200){
+
             var txt = url.readText()
             var arr:JSONArray = JSONArray(txt)
             for(i in 0 until arr.length()){
                 var obj:JSONObject = arr.get(i) as JSONObject
                 Log.i("testLog", "cc :${ obj["intime"].toString()}")
-                  list.add("사번 : ${ obj["empNo"].toString()} 이름 : ${ obj["username"].toString()} \n출입 시간 : ${ obj["intime"].toString()}")
+                list.add("사번 : ${ obj["empNo"].toString()} \n이름 : ${ obj["username"].toString()} \n출입 시간 \n ${ obj["intime"].toString()}")
             }
             return list
-        } else return list
+
     }
 
 
@@ -69,19 +68,18 @@ class Function_openList : AppCompatActivity() {
 
         var se=  URLEncoder.encode(search, "UTF-8");
         val url = URL("${Static.server_url}/openSearch?search=${se}&startDate=${date1}&endDate=${date2}")
-        val conn = url.openConnection() as HttpURLConnection // casting
-        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
+
         Log.i("testLog", "search : ${se}")
         var list:ArrayList<String> = arrayListOf()
-        if(conn.responseCode == 200){
+
             var txt = url.readText()
             var arr: JSONArray = JSONArray(txt)
             for(i in 0 until arr.length()){
                 var obj: JSONObject = arr.get(i) as JSONObject
-                list.add("사번 : ${ obj["empNo"].toString()} 이름 : ${ obj["username"].toString()} \n출입 시간 : ${ obj["intime"].toString()}")
+                list.add("사번 : ${ obj["empNo"].toString()} \n이름 : ${ obj["username"].toString()} \n출입 시간 \n ${ obj["intime"].toString()}")
             }
             return list
-        } else return list
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

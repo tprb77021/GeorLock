@@ -56,15 +56,12 @@ class UserEdit : AppCompatActivity() {
 
     fun UpdateMainLog(empNo:String,userPw:String):String{
         val url = URL("${Static.server_url}/userupdate?empNo=${empNo}&userPw=${userPw}")
-        val conn = url.openConnection() as HttpURLConnection // casting
-        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
-        if(conn.responseCode == 200){
             val txt = url.readText()
             /*val arr = JSONArray(txt)
             var item = arr*/
             return "${txt}"
-        } else return "null"
+
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {

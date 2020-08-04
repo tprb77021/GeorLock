@@ -11,7 +11,6 @@ import android.util.Log
 import androidx.core.app.NotificationCompat
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import kotlinx.android.synthetic.main.activity_login.*
 
 
 class MyFirebaseMessagingService : FirebaseMessagingService() {
@@ -34,20 +33,30 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             }
 
             if(remoteMessage.notification != null){
-                Log.i("testLog", "msg notificationn Title : ${remoteMessage.notification!!.title}")
-                Log.i("testLog", "msg notificationn body : ${remoteMessage.notification!!.body}")
+                if("${remoteMessage.notification!!.title}".equals("Georlokc!")) {
+                    Log.i(
+                        "testLog",
+                        "백msg notificationn Title : ${remoteMessage.notification!!.title}"
+                    )
+                    Log.i(
+                        "testLog",
+                        "msg notificationn body : ${remoteMessage.notification!!.body}"
+                    )
+                }
+
             }
-        } else{
+        }
+            else{
                 if("${remoteMessage.notification!!.title}".equals("Georlokc!")){
                  Log.i("testLog", "size?")
-                Log.i("testLog", "msg notificationn Title : ${remoteMessage.notification!!.title}")
+                Log.i("testLog", "포msg notificationn Title : ${remoteMessage.notification!!.title}")
                 Log.i("testLog", "msg notificationn body : ${remoteMessage.notification!!.body}")
                 sendNotification(" ${remoteMessage.notification!!.title}","${remoteMessage.notification!!.body}")
                 }else if("${remoteMessage.notification!!.title}".equals("door")){
                     var tmps:List<String> =  "${remoteMessage.notification!!.body}".split("@");
                     Log.i("testLog", "kl${remoteMessage.notification!!.body}")
                         val intent = Intent(this, MainActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         intent.putExtra("infos","${tmps[1]}")
                         startActivity(intent)
                 }
@@ -70,7 +79,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify(0, notificationBuilder.build())
+        notificationManager.notify(1234, notificationBuilder.build())
     }
 
     private fun handleNow() {

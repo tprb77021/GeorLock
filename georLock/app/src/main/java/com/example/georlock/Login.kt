@@ -78,15 +78,12 @@ class Login : AppCompatActivity() {
 
     fun UpdateMainLog(empNo:String,userPw:String,tokens:String):String{
         val url = URL("${server_url}/login?empNo=${empNo}&userPw=${userPw}&tokens=${tokens}")
-        val conn = url.openConnection() as HttpURLConnection // casting
-        Log.i("testLog", "conn.responseCode : ${conn.responseCode}")
 
-        if(conn.responseCode == 200){
             val txt = url.readText()
             /*val arr = JSONArray(txt)
             var item = arr*/
             return "${txt}"
-        } else return "null"
+
     }
 
 }
