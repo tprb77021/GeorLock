@@ -25,8 +25,8 @@ class Accessmodity : AppCompatActivity() {
             Log.i("testLog", intent.getStringExtra("info").toString())
             empNum.setText(infos?.get(2))
             username.setText(infos?.get(5))
-            intime.setText(infos?.get(9))
-            outtime.setText(infos?.get(11))
+            intime.setText(infos?.get(8))
+            outtime.setText(infos?.get(10))
         }
 
         button_delete.setOnClickListener {
