@@ -13,6 +13,7 @@ public class InsertService {
 
     public void Accessinsert(Login login) throws Exception {
         login.setUserPw(login.getEmpNo());
+        login.setNfc(login.getEmpNo()+"0000FF078069FFFFFFFFFFFF");
         insertMapper.insert(login);
     }
 

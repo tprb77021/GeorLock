@@ -25,7 +25,7 @@ public class AndroidPushPeriodicNotifications {
         LocalDate localDate = LocalDate.now();
        /* " name :"+tokens.getUsername()+"님의*/
         String name = "empNo :"+tokens.getEmpNo()+" open please";
-        String title= "Georlokc!";
+        String title= "Georlock!";
         String sampleData[] = {tokens.getToken()};
         if(type==2){
             title = "door";

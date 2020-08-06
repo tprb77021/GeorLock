@@ -17,7 +17,7 @@
         select empNo,token,username from users where empNo = #{empNo};
     </select>
     <select id="getdoor"
-            resultType="String">
+            resultType="com.springboot.georlock.dto.Door">
         select * from door;
     </select>
     <select id="doorOpenTry" parameterType ="String"

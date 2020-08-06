@@ -1,5 +1,6 @@
 package com.springboot.georlock.mapper;
 
+import com.springboot.georlock.dto.Door;
 import com.springboot.georlock.dto.Login;
 import org.json.JSONException;
 
@@ -13,7 +14,7 @@ public interface LoginMapper {
 
     void updateToken(Login login) throws Exception;
 
-    String getdoor();
+    Door getdoor();
 
     void setdoor(int i);
 

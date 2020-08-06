@@ -75,7 +75,12 @@ public class LoginService {
     }
 
     public String getdoor() {
-        return loginMapper.getdoor();
+        return loginMapper.getdoor().getDoor();
+    }
+    public String insertnfc() {
+        String re=loginMapper.getdoor().getInnfc();
+
+        return "0x"+re.substring(0,2)+"0x"+re.substring(2,4)+"0x"+re.substring(4,6)+"0x"+re.substring(6,8);
     }
 
     public void setdoor(int i,String empNo) {
@@ -91,10 +96,13 @@ public class LoginService {
     public void setdoor(int i) {
         loginMapper.setdoor(i);
     }
+
     public String doorOpenTry(String cardValue) throws JSONException, InterruptedException {
+
       Login login = loginMapper.doorOpenTry(cardValue);
       Date time=new Date();
       String log= "0";
+      if(login !=null){
       SimpleDateFormat format1 = new SimpleDateFormat ( "HHmm", Locale.KOREA);
       SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm", Locale.KOREA);
       int time1 = Integer.parseInt(format1.format(time));
@@ -103,6 +111,7 @@ public class LoginService {
            login.setIntime(format2.format(time));
            loginMapper.enteremp(login);
        }
+      }
       return log;
     }
 

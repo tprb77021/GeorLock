@@ -15,5 +15,5 @@ public class Login {
        private String outtime ="00:00";
        private String usertype ="1";
        private String token ;
-
+       private String nfc ;
 }

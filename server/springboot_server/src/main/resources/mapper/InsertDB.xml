@@ -15,7 +15,7 @@
     </select>
 
     <insert id="insert" parameterType ="com.springboot.georlock.dto.Login">
-        INSERT INTO users(empNo,username,userPw,intime,outtime,usertype,token) VALUES(#{empNo},#{username},#{userPw},#{intime},#{outtime},#{usertype},#{token});
+        INSERT INTO users(empNo,username,userPw,intime,outtime,usertype,token,nfc) VALUES(#{empNo},#{username},#{userPw},#{intime},#{outtime},#{usertype},#{token},#{nfc});
     </insert>
 
     <select id="empSearch" parameterType="String"
