@@ -53,6 +53,7 @@ if data2[0:1] == '1':
         pn532.mifare_classic_write_block(block_number, data)
         if pn532.mifare_classic_read_block(block_number) == data:
             print('write block %d successfully' % block_number)
+            requests.get('http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080/resetnfc')
   except nfc.PN532Error as e:
         print(e.errmsg)
   GPIO.cleanup()

@@ -72,8 +72,6 @@ class Login : AppCompatActivity() {
                 }
             }
         }.start()
-
-
     }
 
     fun UpdateMainLog(empNo:String,userPw:String,tokens:String):String{
