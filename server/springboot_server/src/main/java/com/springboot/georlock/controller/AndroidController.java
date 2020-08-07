@@ -44,57 +44,58 @@ public class AndroidController {
     AndroidPushNotificationService androidPushNotificationService;
 
     Logger logger = LoggerFactory.getLogger(this.getClass());
-    @GetMapping( value = "/q" )
+
+
+    @GetMapping( value = "/q" )     //테스트용
     public List<Login> query() throws Exception{
         return testService.getAll();
     }
 
-//출입 기록 관련
-    @GetMapping( value = "/openlist" )
+
+    @GetMapping( value = "/openlist" )    //출입 기록 리스트
     public List<Enteremp> openlist() throws Exception{
-        return recordService.getEnteremp();
+        return recordService.getEnteremp(); // 안드로이드에 출입 기록 전송
     }
 
-    @GetMapping( value = "/openSearch" )
+    @GetMapping( value = "/openSearch" ) //검색된 출입 기록
     public List<Enteremp> openSearch(String search,String startDate,String endDate) throws Exception{
         Dates dates=new Dates();
         dates.setStartDate(startDate);
         dates.setEndDate(endDate);
         dates.setTextSearch(search);
-        return  recordService.getRecordSearch(dates);
+        return  recordService.getRecordSearch(dates); // 안드로이드에 검색된 출입 기록 전송
     }
 
-    //출입 권한 관련
-    @GetMapping( value = "/accesslist" )
+
+    @GetMapping( value = "/accesslist" )  //출입 권한 리스트
     public List<Login> accesslist() throws Exception{
-        return testService.getAll();
+        return testService.getAll();  // 안드로이드에 나타낼 검색된 회원 정보(출입 권한)
     }
 
-    @GetMapping( value = "/accessSearch" )
+    @GetMapping( value = "/accessSearch" )  //검색된 출입 권한
     public List<Login> accessSearch(String search) throws Exception{
-        return  accessService.AccessSearch(search);
+        return  accessService.AccessSearch(search);  // 안드로이드에 나타낼 검색된 회원 정보(출입 권한)
     }
 
-    @GetMapping("/delete")
+    @GetMapping("/delete")      // 출입 권한 삭제
     public void delete(String empNo) throws Exception{
-        accessService.Accessdelete(empNo);
+        accessService.Accessdelete(empNo); //출입 권한 삭제 실행
     }
 
-    @GetMapping("/update")
+    @GetMapping("/update")      // 출입 권한 수정
     public void update(String empNo, String intime, String outtime) throws Exception{
         Login login=new Login();
         login.setEmpNo(empNo);
         login.setIntime(intime);
         login.setOuttime(outtime);
-        accessService.AccessUpdate(login);
+        accessService.AccessUpdate(login);  //출입 권한 수정 실행
     }
 
-    //로그인
-    @GetMapping("/login")
-    public String login(String empNo, String userPw,String tokens) throws Exception{
-        Login login=loginService.Login(empNo,userPw);
 
-        String log="0실패";
+    @GetMapping("/login")   //로그인
+    public String login(String empNo, String userPw,String tokens) throws Exception{
+        Login login=loginService.Login(empNo,userPw);     //로그인시도
+        String log="0실패";   //0실패 : 로그인실패 ,1성공 : 일반사용자 ,2성공 : 관리자
         if(login.getUsertype().equals("1")){
             log="1성공@"+login.getIntime()+"@"+login.getOuttime()+"@"+login.getEmpNo();
             loginService.updateToken(tokens,empNo);
@@ -103,32 +104,30 @@ public class AndroidController {
             log="2성공@"+login.getIntime()+"@"+login.getOuttime()+"@"+login.getEmpNo();
             loginService.updateToken(tokens,empNo);
         }
-        return log;
+
+        return log;      //안드로이드에 로그인 결과 전송
     }
 
-    //개인정보 수정
-    @GetMapping("/userupdate")
+
+    @GetMapping("/userupdate")  //개인정보 수정
     public void userupdate(String empNo,String userPw) throws Exception{
-        loginService.userUpdate(empNo,userPw);
+        loginService.userUpdate(empNo,userPw);  //개인정보 수정 실행
     }
 
-    @GetMapping(value ="/door")
+    @GetMapping(value ="/door")  //문 상태 확인
     public String Door() throws Exception{
-        return loginService.getdoor();
+        return loginService.getdoor();  //현재 문상태 전송
     }
 
 
+    @GetMapping("/opencall")    //출입 개폐 요청(firebase 사용)
+    public @ResponseBody ResponseEntity<String> opencall(String empNo) throws JSONException, InterruptedException {
+        Login token=loginService.getToken("11110000");  //토큰값 조회
 
-
-
-
-    //    @Scheduled(fixedRate = 10000)
-    @GetMapping("/opencall")
-    public @ResponseBody
-    ResponseEntity<String> opencall(String empNo) throws JSONException, InterruptedException {
-        Login token=loginService.getToken("11110000");
         String notifications =
                 AndroidPushPeriodicNotifications.PeriodicNotificationJson(token,1,"");
+                // 푸시메시지 전송을 위한 토큰값과 타입 설정
+
         HttpEntity<String> request = new HttpEntity<>(notifications);
         CompletableFuture<String> pushNotification =
                 androidPushNotificationService.send(request);
@@ -147,20 +146,21 @@ public class AndroidController {
     }
 
 
-    @GetMapping("/open")
+    @GetMapping("/open")     //출입문 열기 및 안드로이드 상태에 문상태 푸시로 전송
     public @ResponseBody
     void open(String empNo) throws JSONException, InterruptedException {
         loginService.setdoor(1,empNo);
         send();
     }
 
-    @GetMapping("/close")
+    @GetMapping("/close")    //출입문 닫기 및 안드로이드 상태에 문상태 푸시로 전송
     public @ResponseBody
     void close() throws JSONException, InterruptedException {
         loginService.setdoor(0);
         send();
     }
 
+    // 안드로이드 상태에 문상태 푸시로 전송
     public  ResponseEntity<String> send() throws JSONException, InterruptedException{
         Login token=loginService.getToken("11110000");
         String notifications =

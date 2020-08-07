@@ -19,7 +19,7 @@ public class RecordController {
     @RequestMapping("/record")  //출입 기록 페이지 이동
     public ModelAndView record() throws Exception {
         ModelAndView mav=new ModelAndView("record");
-        List<Enteremp> list= recordService.getEnteremp();
+        List<Enteremp> list= recordService.getEnteremp();   //출입 기록 조회
         mav.addObject("recordlist",list);
         return mav;
     }
@@ -29,7 +29,7 @@ public class RecordController {
     @RequestMapping("/recordSearch")  //출입 기록 페이지 검색 기능
     public ModelAndView recordSearch(Dates dates) throws Exception {
         ModelAndView mav=new ModelAndView("record");
-        List<Enteremp> list=recordService.getRecordSearch(dates);
+        List<Enteremp> list=recordService.getRecordSearch(dates);  //출입 기록 검색
        mav.addObject("recordlist",list);
         return mav;
     }

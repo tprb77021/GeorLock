@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_authorization_list.*
 import org.json.JSONArray
 import org.json.JSONObject
-import java.net.HttpURLConnection
 import java.net.URL
 import java.net.URLEncoder
 
@@ -34,7 +33,7 @@ class AuthorizationList : AppCompatActivity() {
 //            Log.i("testLog", "$position, ${datas[position]}")
                     Log.i("testLogdd", "$position, ${list.get(position)}")
                     Toast.makeText(this,"${list.get(position)}", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this,Accessmodity::class.java)
+                    val intent = Intent(this,Accessmodify::class.java)
                     intent.putExtra("info","${list.get(position)}")
                     intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
                     startActivity(intent)
@@ -58,7 +57,7 @@ class AuthorizationList : AppCompatActivity() {
 //            Log.i("testLog", "$position, ${datas[position]}")
                         Log.i("testLogdd", "$position, ${list.get(position)}")
                         Toast.makeText(this,"${list.get(position)}", Toast.LENGTH_SHORT).show()
-                        val intent = Intent(this,Accessmodity::class.java)
+                        val intent = Intent(this,Accessmodify::class.java)
                         intent.putExtra("info","${list.get(position)}")
                         intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
                         startActivity(intent)

@@ -9,7 +9,7 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 
 class Loading : AppCompatActivity() {
-    internal val app_serverurl = "http://192.168.0.88:8091"
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

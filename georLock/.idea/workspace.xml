@@ -17,13 +17,25 @@
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf972612-d8c7-4b65-88d0-cbf2e8c4b60b" name="Default Changelist" comment="" />
+    <list default="true" id="cf972612-d8c7-4b65-88d0-cbf2e8c4b60b" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/app/app.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/app/app.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/georlock/Accessmodity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/georlock/Accessmodify.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/georlock/AuthorizationList.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/georlock/AuthorizationList.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/georlock/Loading.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/georlock/Loading.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/georlock/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/georlock/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rpi/nfc_read.py" beforeDir="false" afterPath="$PROJECT_DIR$/../rpi/nfc_read.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../rpi/nfc_write.py" beforeDir="false" afterPath="$PROJECT_DIR$/../rpi/nfc_write.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/springboot_server/src/main/java/com/springboot/georlock/svc/AndroidPushPeriodicNotifications.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/springboot_server/src/main/java/com/springboot/georlock/svc/AndroidPushPeriodicNotifications.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/springboot_server/src/main/java/com/springboot/georlock/svc/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../server/springboot_server/src/main/java/com/springboot/georlock/svc/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../server/springboot_server/src/main/resources/asset/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/../server/springboot_server/src/main/resources/asset/css/login.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="127.0.0.1:62001" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />

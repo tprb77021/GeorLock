@@ -36,28 +36,28 @@ public class AccessController {
     @Autowired
             AccessService accessService;
 
-    @RequestMapping("/access")      //출입 권한 관리 페이지 이동
+    @RequestMapping("/access")      //회원 정보(출입 권한) 관리 페이지 이동
     public ModelAndView access() throws Exception {
         ModelAndView mav = new ModelAndView("access");
-        List<Login> userlist = accessService.getAll();
+        List<Login> userlist = accessService.getAll();      // 웹에 나타낼 회원 정보(출입 권한) 조회
         mav.addObject("userlist", userlist);
         return mav;
     }
 
 
-    @RequestMapping("/accessSearch")      //출입 권한 관리 검색 기능(사번 or 이름)
+    @RequestMapping("/accessSearch")      // 회원 정보(출입 권한 관리) 검색 기능(사번 or 이름)
     public ModelAndView accessSearch( String textSearch) throws Exception {
         ModelAndView mav = new ModelAndView("access");
-        List<Login> userlist = accessService.AccessSearch(textSearch);
+        List<Login> userlist = accessService.AccessSearch(textSearch); // 웹에 나타낼 검색된 회원 정보(출입 권한) 조회
         mav.addObject("userlist", userlist);
         return mav;
     }
 
 
 
-    @RequestMapping("/accessdelete")      //출입 권한 삭제 기능
+    @RequestMapping("/accessdelete")      //회원 정보(출입 권한) 삭제 기능
     public String accessdelete(@RequestParam String empNo) throws Exception {
-        accessService.Accessdelete(empNo);
+        accessService.Accessdelete(empNo);  //회원 정보 삭제
         return "redirect:access";
     }
 
@@ -72,7 +72,7 @@ public class AccessController {
 
     @RequestMapping("/accessupdate")     //출입 시간 수정 기능
     public String accessupdate(Login login) throws Exception {
-        accessService.AccessUpdate(login);
+        accessService.AccessUpdate(login);  //회원 정보 수정
         return "close";
     }
 

@@ -14,7 +14,7 @@ public class AccessService {
 
     @Autowired
     AccessMapper accessMapper;
-
+    //
     public List<Login> getAll() throws Exception{
         return accessMapper.getAll();
     }
@@ -27,9 +27,6 @@ public class AccessService {
     public void Accessdelete(String empNo) throws Exception {
         accessMapper.delete(empNo);
     }
-
-
-
 
 
     public List<Login> AccessSearch(String textSearch) throws Exception{

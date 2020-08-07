@@ -47,7 +47,6 @@ public class LoginController {
     @RequestMapping("/login")       //로그인 기능
     public ModelAndView login(String empNo,String userPw,boolean autoLogin,HttpServletResponse response) throws Exception{
         ModelAndView modelAndView = new ModelAndView("redirect:/access");
-        System.out.println(loginService.Login(empNo,userPw));
         if(loginService.Login(empNo,userPw).getEmpNo()==null){         //로그인 확인
             modelAndView.setViewName("login");
             modelAndView.addObject("message", "로그인 실패");
@@ -57,12 +56,6 @@ public class LoginController {
         }
         return modelAndView;
     }
-
-
-
-
-
-
 
 
     @RequestMapping("/logout")      //로그아웃 기능

@@ -18,7 +18,7 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/loginButton"/>
         <activity android:name=".AuthorizationList"/>
-        <activity android:name=".Accessmodity"/>
+        <activity android:name=".Accessmodify"/>
         <activity android:name=".UserEdit"/>
         <activity android:name=".UserMain"/>
         <activity android:name=".Function_openList" />

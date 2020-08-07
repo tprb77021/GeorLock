@@ -23,7 +23,6 @@ public class AndroidPushPeriodicNotifications {
 
     public static String PeriodicNotificationJson(Login tokens,int type,String door) throws JSONException{
         LocalDate localDate = LocalDate.now();
-       /* " name :"+tokens.getUsername()+"님의*/
         String name = "empNo :"+tokens.getEmpNo()+" open please";
         String title= "Georlock!";
         String sampleData[] = {tokens.getToken()};

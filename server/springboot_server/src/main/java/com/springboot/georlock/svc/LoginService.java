@@ -104,6 +104,7 @@ public class LoginService {
       Login login = loginMapper.doorOpenTry(cardValue);
       Date time=new Date();
       String log= "0";
+
       if(login !=null){
       SimpleDateFormat format1 = new SimpleDateFormat ( "HHmm", Locale.KOREA);
       SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm", Locale.KOREA);

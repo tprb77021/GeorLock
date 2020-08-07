@@ -82,15 +82,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun UpdateMainLog(empNo:String,userPw:String):String{
-        val url = URL("${Static.server_url}/login?empNo=${empNo}&userPw=${userPw}")
 
-            val txt = url.readText()
-            /*val arr = JSONArray(txt)
-            var item = arr*/
-            return "${txt}"
-
-    }
 
 
 

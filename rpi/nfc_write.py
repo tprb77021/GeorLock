@@ -24,7 +24,8 @@ while True:
     # Try again if no card is available.
     if uid is not None:
         break
-data2 = requests.get('http://192.168.0.88:8091/insertnfc').text
+        
+data2 = requests.get('http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080/insertnfc').text
 print('Found card with UID:', [hex(i) for i in uid])
 print(data2)
 """
@@ -39,18 +40,19 @@ since 'KEY A' is unreadable. In contrast, the last 6 bytes (KEY B) of the
 """
 # Write block #6
 block_number = 2
-num1 = int(data2[:4],16)
-num2 = int(data2[4:8],16)
-num3 = int(data2[8:12],16)
-num4 = int(data2[12:16],16)
-key_a = b'\xFF\xFF\xFF\xFF\xFF\xFF'
-data = bytes([num1, num2, num3, num4, 0x00, 0x00, 0xFF, 0x07, 0x80, 0x69, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF])
-try:
-      pn532.mifare_classic_authenticate_block(
-          uid, block_number=block_number, key_number=nfc.MIFARE_CMD_AUTH_A, key=key_a)
-      pn532.mifare_classic_write_block(block_number, data)
-      if pn532.mifare_classic_read_block(block_number) == data:
-          print('write block %d successfully' % block_number)
-except nfc.PN532Error as e:
-      print(e.errmsg)
-GPIO.cleanup()
+if data2[0:1] == '1':
+  num1 = int(data2[1:5],16)
+  num2 = int(data2[5:9],16)
+  num3 = int(data2[9:13],16)
+  num4 = int(data2[13:17],16)
+  key_a = b'\xFF\xFF\xFF\xFF\xFF\xFF'
+  data = bytes([num1, num2, num3, num4, 0x00, 0x00, 0xFF, 0x07, 0x80, 0x69, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF])
+  try:
+        pn532.mifare_classic_authenticate_block(
+            uid, block_number=block_number, key_number=nfc.MIFARE_CMD_AUTH_A, key=key_a)
+        pn532.mifare_classic_write_block(block_number, data)
+        if pn532.mifare_classic_read_block(block_number) == data:
+            print('write block %d successfully' % block_number)
+  except nfc.PN532Error as e:
+        print(e.errmsg)
+  GPIO.cleanup()
