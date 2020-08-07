@@ -62,10 +62,11 @@ public class LoginService {
 
     }
 
-    public Login getToken(String empNo) {
-      return   loginMapper.getToken(empNo);
+    public Login getToken(String empNo) {   //토큰값 조회
+        return   loginMapper.getToken(empNo);
     }
 
+    //
     public void updateToken(String token,String empNo) throws Exception {
         Login login = new Login();
         login.setToken(token);
@@ -74,51 +75,50 @@ public class LoginService {
         loginMapper.updateToken(login);
     }
 
-    public String getdoor() {
+    public String getdoor() {   // 현재 개폐 상태 조회
         return loginMapper.getdoor().getDoor();
     }
-    public String getinsertnfc() {
-        String re=loginMapper.getdoor().getInnfc();
-        if(!re.equals('0')){
-        return "10x"+re.substring(0,2)+"0x"+re.substring(2,4)+"0x"+re.substring(4,6)+"0x"+re.substring(6,8);
-        }
-        return "0";
-    }
-
-    public void setdoor(int i,String empNo) {
-        loginMapper.setdoor(i);
+    public void setdoor(int i,String empNo) {   //도어락 상태 설정 및 출입 기록 등록
+        loginMapper.setdoor(i);     //도어락 상태 설정
        if(!(empNo.equals("no")) ){
         Date time=new Date();
         SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm", Locale.KOREA);
         Login login = loginMapper.selectuser(empNo);
         login.setIntime(format2.format(time));
-        loginMapper.enteremp(login);
+        loginMapper.enteremp(login);                    //출입 기록 등록
        }
     }
-    public void setdoor(int i) {
+    public void setdoor(int i) {        // 도어락 상태 설정
         loginMapper.setdoor(i);
     }
-
-    public String doorOpenTry(String cardValue) throws JSONException, InterruptedException {
-
-      Login login = loginMapper.doorOpenTry(cardValue);
+    public String doorOpenTry(String cardValue) {   // nfc로 도어락 오픈 시도
+      Login login = loginMapper.doorOpenTry(cardValue); //nfc로 회원정보 조회
       Date time=new Date();
       String log= "0";
-
       if(login !=null){
       SimpleDateFormat format1 = new SimpleDateFormat ( "HHmm", Locale.KOREA);
       SimpleDateFormat format2 = new SimpleDateFormat ( "yyyyMMddHHmm", Locale.KOREA);
       int time1 = Integer.parseInt(format1.format(time));
-       if(time1 >= Integer.parseInt(login.getIntime().replace(":","")) && time1 <= Integer.parseInt(login.getOuttime().replace(":","")) ){
+       if(time1 >= Integer.parseInt(login.getIntime().replace(":",""))
+               && time1 <= Integer.parseInt(login.getOuttime().replace(":","")) ){
+           //nfc 태그한 시간과 회원의 출입 가능 여부
            log="1";
            login.setIntime(format2.format(time));
-           loginMapper.enteremp(login);
+           loginMapper.enteremp(login);                //출입 기록 등록
        }
       }
       return log;
     }
 
-    public void setnfc(String nfc) {
+    public void setnfc(String nfc) { //nfc 등록(쓰기) 실행 여부 설정
         loginMapper.setnfc(nfc);
+    }
+
+    public String getinsertnfc() {  //nfc 등록(쓰기)값 설정
+        String re=loginMapper.getdoor().getInnfc();
+        if(!re.equals('0')){
+            return "10x"+re.substring(0,2)+"0x"+re.substring(2,4)+"0x"+re.substring(4,6)+"0x"+re.substring(6,8);
+        }
+        return "0";
     }
 }
