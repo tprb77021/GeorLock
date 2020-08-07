@@ -20,14 +20,15 @@ class Login : AppCompatActivity() {
         var userPw=MyApplication.prefs.getString("userPw", "no")
         var temp:String=""
         if(intent.hasExtra("token")){
-           temp = intent.getStringExtra("token").toString()
+            temp = intent.getStringExtra("token").toString()
         }
         if(empNo != "no" && userPw != "no" ){
             loginmethod(empNo,userPw,"${temp}")
         }
 
+        // 로그인 버튼 클릭시 로그인 입력 값 서버와 비교 후 로그인 성공 or 실패
+        // 로그인 성공시 MainActivity 페이지로 전환함
         login_button.setOnClickListener {
-
             loginmethod("${username.text}","${password.text}","${temp}")
         }
     }
@@ -39,7 +40,7 @@ class Login : AppCompatActivity() {
         Log.i("testLog", "loginclick u:${username.text}p:${password.text}")
 
         Thread(){
-            tmp = UpdateMainLog(empNo,userPw,tokens)
+            tmp = Login(empNo,userPw,tokens)
             var tmps:List<String> = tmp.split("@");
             runOnUiThread{
                 Log.i("testLog", "loginclick : ${tmp}")
@@ -72,15 +73,17 @@ class Login : AppCompatActivity() {
                 }
             }
         }.start()
+
+
     }
 
-    fun UpdateMainLog(empNo:String,userPw:String,tokens:String):String{
+    fun Login(empNo:String,userPw:String,tokens:String):String{
         val url = URL("${server_url}/login?empNo=${empNo}&userPw=${userPw}&tokens=${tokens}")
 
-            val txt = url.readText()
-            /*val arr = JSONArray(txt)
-            var item = arr*/
-            return "${txt}"
+        val txt = url.readText()
+        /*val arr = JSONArray(txt)
+        var item = arr*/
+        return "${txt}"
 
     }
 

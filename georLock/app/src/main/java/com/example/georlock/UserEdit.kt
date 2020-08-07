@@ -14,22 +14,25 @@ class UserEdit : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_edit)
+
+        //뒤로가기 버튼
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
+
+        //유저의 정보를 넘겨받음
         var tmp:String?= ""
         var infos:List<String>? =null
         if(intent.hasExtra("infoss")){
             tmp=intent.getStringExtra("infoss")
-             infos= tmp?.split("@")
+            infos= tmp?.split("@")
         }
 
-
-
+        //수정 버튼 클릭시 변경된 비밀번호 값을 비교
+        //수정된 내용 서버로 전송 후 UserMain Page로 전환
         request_ckeck.setOnClickListener {
             val intent = Intent(this, Login::class.java)
 
             if ("${pwd1.text.toString()}".equals("${pwd2.text.toString()}")) {
                 Thread() {
-
 
                     var list: String =
                         UpdateMainLog( "${infos?.get(2).toString()}",  "${pwd1.text.toString()}")
@@ -44,23 +47,23 @@ class UserEdit : AppCompatActivity() {
             }
         }
 
+        //취소 버튼 클릭시 UserMain Page로 전환
         cancel.setOnClickListener {
             val intent = Intent(this, UserMain::class.java)
             Log.i("testLog", "loginedededed : ${tmp}")
             intent.putExtra("infos",tmp)
             startActivity(intent)
         }
-
-
     }
 
+    //사용자의 정보 수정
     fun UpdateMainLog(empNo:String,userPw:String):String{
         val url = URL("${Static.server_url}/userupdate?empNo=${empNo}&userPw=${userPw}")
 
-            val txt = url.readText()
-            /*val arr = JSONArray(txt)
-            var item = arr*/
-            return "${txt}"
+        val txt = url.readText()
+        /*val arr = JSONArray(txt)
+        var item = arr*/
+        return "${txt}"
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

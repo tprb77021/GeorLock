@@ -9,8 +9,6 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
 
 class Loading : AppCompatActivity() {
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         var intent = Intent(this, Login::class.java)
@@ -26,12 +24,10 @@ class Loading : AppCompatActivity() {
             intent.putExtra("token","$token")
             Log.i("testLog", "tokenssss : $token")
         })
-
         val handler = Handler()
         handler.postDelayed({
             startActivity(intent)
             finish()
         }, 3000)
-
     }
 }

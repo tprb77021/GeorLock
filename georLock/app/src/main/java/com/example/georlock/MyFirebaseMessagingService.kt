@@ -23,9 +23,9 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
     override fun onMessageReceived(remoteMessage : RemoteMessage) {
         super.onMessageReceived(remoteMessage)
         Log.i("testLog", "message received")
-            Log.i("testLog", "${remoteMessage.messageType}")
-            if(remoteMessage.data.size > 0){
-                Log.i("testLog", "msg data : ${remoteMessage.data}")
+        Log.i("testLog", "${remoteMessage.messageType}")
+        if(remoteMessage.data.size > 0){
+            Log.i("testLog", "msg data : ${remoteMessage.data}")
 
             if(true){
             } else{
@@ -46,20 +46,20 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
             }
         }
-            else{
-                if("${remoteMessage.notification!!.title}".equals("Georlokc!")){
-                 Log.i("testLog", "size?")
+        else{
+            if("${remoteMessage.notification!!.title}".equals("Georlokc!")){
+                Log.i("testLog", "size?")
                 Log.i("testLog", "포msg notificationn Title : ${remoteMessage.notification!!.title}")
                 Log.i("testLog", "msg notificationn body : ${remoteMessage.notification!!.body}")
                 sendNotification(" ${remoteMessage.notification!!.title}","${remoteMessage.notification!!.body}")
-                }else if("${remoteMessage.notification!!.title}".equals("door")){
-                    var tmps:List<String> =  "${remoteMessage.notification!!.body}".split("@");
-                    Log.i("testLog", "kl${remoteMessage.notification!!.body}")
-                        val intent = Intent(this, MainActivity::class.java)
-                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                        intent.putExtra("infos","${tmps[1]}")
-                        startActivity(intent)
-                }
+            }else if("${remoteMessage.notification!!.title}".equals("door")){
+                var tmps:List<String> =  "${remoteMessage.notification!!.body}".split("@");
+                Log.i("testLog", "kl${remoteMessage.notification!!.body}")
+                val intent = Intent(this, MainActivity::class.java)
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                intent.putExtra("infos","${tmps[1]}")
+                startActivity(intent)
+            }
         }
 
     }

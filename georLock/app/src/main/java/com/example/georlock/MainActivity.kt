@@ -24,6 +24,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
 
+        // 버튼 클릭시 문 개폐 여부에 따른 버튼 색상 변경
+        // 닫힌 상태 - Red, 클릭 후 문 개방시 Green으로 변경
         Thread() {
             var doors: String = Door()
             runOnUiThread {
@@ -36,17 +38,19 @@ class MainActivity : AppCompatActivity() {
         }.start()
 
 
-
+        // 버튼 클릭시 출입기록 페이지로 전환
         button2.setOnClickListener {
             val intent = Intent(this, Function_openList::class.java)
             startActivity(intent)
         }
 
+        // 버튼 클릭시 출입권한 페이지로 전환
         button3.setOnClickListener {
             val intent = Intent(this, AuthorizationList::class.java)
             startActivity(intent)
         }
 
+        // 버튼 클릭시 로그인 상태 종료 후 로그인 페이지로 전환
         button4.setOnClickListener {
             MyApplication.prefs.delete("empNo")
             MyApplication.prefs.delete("userPw")
@@ -54,6 +58,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        // 문이 열렸을 때 TOAST로 알림 띄워주는 것
         open.setOnClickListener {
 
             Toast.makeText(this, "문이 열렸습니다.", Toast.LENGTH_SHORT).show()
@@ -64,43 +69,38 @@ class MainActivity : AppCompatActivity() {
                 }
                 var list: String = open( "${temp}")
                 runOnUiThread {
-                    }
+                }
             }.start()
         }
 
     }
 
-
-
+    // 출입문 개폐
     fun open(empNo:String):String{
         val url = URL("${Static.server_url}/open?empNo=${empNo}")
 
-            val txt = url.readText()
-            /*val arr = JSONArray(txt)
-            var item = arr*/
-            return "${txt}"
+        val txt = url.readText()
+        /*val arr = JSONArray(txt)
+        var item = arr*/
+        return "${txt}"
 
     }
 
-
-
-
-
+    // 문 현재 상태 확인
     fun Door():String{
         val url = URL("${Static.server_url}/door")
 
-            val txt = url.readText()
-            /*val arr = JSONArray(txt)
-            var item = arr*/
-            return "${txt}"
+        val txt = url.readText()
+        /*val arr = JSONArray(txt)
+        var item = arr*/
+        return "${txt}"
 
     }
 
-
+    //toolbar의 back키 눌렀을 때 동작
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {
-                //toolbar의 back키 눌렀을 때 동작
                 finish()
                 return true
             }

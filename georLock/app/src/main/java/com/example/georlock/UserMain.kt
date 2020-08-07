@@ -27,20 +27,21 @@ class UserMain : AppCompatActivity() {
 
         }
 
-
+        //버튼 클릭시 사용자 비밀번호 수정 페이지로 전환
         edit_user.setOnClickListener {
             val intent = Intent(this, UserEdit::class.java)
             Log.i("testLog", "${tmp}")
             intent.putExtra("infoss", tmp)
             startActivity(intent)
         }
+        //버튼 클릭시 사용자 로그인 상태 종료
         logout.setOnClickListener {
             MyApplication.prefs.delete("empNo")
             MyApplication.prefs.delete("userPw")
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
-
+        //버튼 클릭시 관리자에게 개폐요청 알림 전송
         opencall.setOnClickListener {
             Toast.makeText(this, "문이 열림 요청함.", Toast.LENGTH_SHORT).show()
             Thread() {
@@ -51,21 +52,18 @@ class UserMain : AppCompatActivity() {
                 runOnUiThread {
                 }
             }.start()
-
-
         }
-
-
     }
 
+    //사용자의 개폐요청 알림
     fun opencall(empNo:String):String{
 
         val url = URL("${Static.server_url}/opencall?empNo=${empNo}")
 
-            val txt = url.readText()
-            /*val arr = JSONArray(txt)
-            var item = arr*/
-            return "${txt}"
+        val txt = url.readText()
+        /*val arr = JSONArray(txt)
+        var item = arr*/
+        return "${txt}"
 
     }
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
