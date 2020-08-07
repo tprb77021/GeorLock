@@ -74,12 +74,6 @@ __Android__
    static클래스에서 server_url 값을 로컬의 아이피와 포트번호로 변경 ( http://아이피(ip):포트번호(port))
 
 __Springboot__
-1.  resources/application.properties 
-   - spring.datasource.url=jdbc:mariadb://192.168.0.35:3306/employee
-   - spring.datasource.username=root
-   - spring.datasource.password=yadoc
-   - spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
-     로컬의 DB환경으로 설정  
    - server.port=8091
      port 번호 설정
    
