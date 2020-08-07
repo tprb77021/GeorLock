@@ -6,7 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="/asset/css/login.css"/>
-<title>login</title>
+    <style>
+        html {
+        background: url(asset/images/main3.png) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    </style>
+    <title>login</title>
 </head>
 <body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

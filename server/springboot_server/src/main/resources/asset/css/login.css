@@ -10,6 +10,8 @@ body {
     margin: auto;
 }
 
+
+
 .form {
     position:relative;
     max-width: 360px;
@@ -58,4 +60,5 @@ body {
     float: left;
     margin-bottom: 10px;
     font-family: 'Noto Sans KR', sans-serif;
+    color: #FFFFFF;
 }

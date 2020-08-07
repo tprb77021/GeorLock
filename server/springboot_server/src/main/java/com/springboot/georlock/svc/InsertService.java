@@ -11,10 +11,12 @@ public class InsertService {
     @Autowired
     InsertMapper insertMapper;
 
-    public void Accessinsert(Login login) throws Exception {
+    public String Accessinsert(Login login) throws Exception {
         login.setUserPw(login.getEmpNo());
         login.setNfc(login.getEmpNo()+"0000FF078069FFFFFFFFFFFF");
         insertMapper.insert(login);
+        System.out.println(login.getNfc());
+        return login.getNfc();
     }
 
     public List<Login> emplist() throws Exception {
@@ -25,4 +27,5 @@ public class InsertService {
         String Search = "%"+textSearch+"%";
         return insertMapper.empSearch(Search);
     }
+
 }

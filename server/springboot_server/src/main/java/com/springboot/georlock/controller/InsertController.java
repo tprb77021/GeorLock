@@ -2,8 +2,10 @@ package com.springboot.georlock.controller;
 
 import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.svc.InsertService;
+import com.springboot.georlock.svc.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +16,8 @@ public class InsertController {
     
     @Autowired
     InsertService insertService;
+    @Autowired
+    LoginService loginService;
 
     @RequestMapping("/insert_btn")      //등록 페이지 이동
     public ModelAndView insertform() throws Exception {
@@ -31,7 +35,13 @@ public class InsertController {
 
     @RequestMapping("/accessinsert")      //등록 기능
     public String accessinsert(Login login) throws Exception {
-        insertService.Accessinsert(login);
+      String nfc = insertService.Accessinsert(login);
+        setnfcs(nfc);
         return "redirect:access";
+    }
+
+
+    public void setnfcs(String nfc) throws Exception{
+        loginService.setnfc(nfc);
     }
 }

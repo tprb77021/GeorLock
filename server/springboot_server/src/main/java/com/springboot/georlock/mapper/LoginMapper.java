@@ -23,4 +23,6 @@ public interface LoginMapper {
     void enteremp(Login login);
 
     Login selectuser(String empNo);
+
+    void setnfc(String nfc);
 }

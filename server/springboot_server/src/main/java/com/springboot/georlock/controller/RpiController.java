@@ -21,9 +21,16 @@ public class RpiController {
     }
     @GetMapping( "/insertnfc" )
     public String insertnfc() throws Exception{
-        String log=loginService.insertnfc();
+        String log=loginService.getinsertnfc();
         return log;
     }
+
+    @GetMapping( "/resetnfc" )
+    public void resetnfc() throws Exception{
+        loginService.setnfc("0");
+    }
+
+
 
 
 

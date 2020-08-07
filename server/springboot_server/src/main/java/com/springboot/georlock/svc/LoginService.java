@@ -77,10 +77,12 @@ public class LoginService {
     public String getdoor() {
         return loginMapper.getdoor().getDoor();
     }
-    public String insertnfc() {
+    public String getinsertnfc() {
         String re=loginMapper.getdoor().getInnfc();
-
-        return "0x"+re.substring(0,2)+"0x"+re.substring(2,4)+"0x"+re.substring(4,6)+"0x"+re.substring(6,8);
+        if(!re.equals('0')){
+        return "10x"+re.substring(0,2)+"0x"+re.substring(2,4)+"0x"+re.substring(4,6)+"0x"+re.substring(6,8);
+        }
+        return "0";
     }
 
     public void setdoor(int i,String empNo) {
@@ -115,4 +117,7 @@ public class LoginService {
       return log;
     }
 
+    public void setnfc(String nfc) {
+        loginMapper.setnfc(nfc);
+    }
 }
