@@ -9,8 +9,8 @@
 	<title>출입권한설정</title>
 	<script
 			src="https://kit.fontawesome.com/a962b14940.js"
-			crossorigin="anonymous"
-	></script>
+			crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <%--header--%>

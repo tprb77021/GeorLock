@@ -11,6 +11,7 @@
             src="https://kit.fontawesome.com/a962b14940.js"
             crossorigin="anonymous"
     ></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
 <%--header--%>

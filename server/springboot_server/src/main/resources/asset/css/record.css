@@ -101,20 +101,19 @@ a {
 .search {
     margin-top: 40px;
     margin-left: 50%;
-    width: 300px;
+    width: 700px;
 }
 
 
-
 .search input[type="date"] {
-    height: 30px;
+    height: 32px;
     border-radius: 6px;
     border: 1px solid #e2e7ee;
     font-family: "Noto Sans KR", sans-serif;
     width: 20%;
 }
 .search input[type="text"] {
-    width: 25%;
+    width: 23%;
     height: 30px;
     border-radius: 6px;
     border: 1px solid #e2e7ee;
@@ -127,7 +126,7 @@ a {
     border: 1px solid #e2e7eeed;
     color: #053863;
     padding: 4px 0;
-    width: 50px;
+    width: 7%;
     height: 30px;
     font-size: 15px;
 }
