@@ -61,7 +61,9 @@
 					<input type = "date" name="startDate"/> ~
 					<input type = "date" name="endDate"/>
 					<input type="text"  name="textSearch" class="search_txt" placeholder="Search..."/>
-					<input type="submit" value="검색">
+					<button type="submit" value="검색">
+						<i class="fas fa-search"></i>
+					</button>
 				</div>
 			</form>
 
