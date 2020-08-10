@@ -179,7 +179,13 @@ button .modify {
     height: 30px;
     font-size: 15px;
 }
-
+.upscroll i{
+    display: scroll;
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    color: #2497f4;
+}
 @media screen and (max-width: 768px) {
     #main {
         display: block;
@@ -204,12 +210,7 @@ button .modify {
         margin-top: 0;
         margin-bottom: 0;
     }
-    .upscroll i{
-        display: scroll;
-        position:fixed;
-        bottom:20px;
-        right:20px;
-        color: #2497f4;
-    }
+
+
 
 }
