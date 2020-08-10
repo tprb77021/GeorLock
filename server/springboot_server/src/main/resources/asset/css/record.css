@@ -122,6 +122,16 @@ a {
     font-family: "Roboto", sans-serif;
 }
 
+.search input[type="submit"] {
+    background-color: #e2e7ee;
+    border-radius: 8px;
+    border: 1px solid #e2e7eeed;
+    color: #053863;
+    padding: 4px 0;
+    width: 50px;
+    height: 30px;
+    font-size: 15px;
+}
 .table {
     margin-top: 20px;
     border-collapse: collapse;
