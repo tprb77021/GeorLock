@@ -33,9 +33,9 @@ public class InsertController {
         return mav;
     }
 
-    @RequestMapping("/accessinsert")      //nfc 쓰기 기능
+    @RequestMapping("/accessinsert")      //등록 및 nfc 값 조회
     public String accessinsert(Login login) throws Exception {
-      String nfc = insertService.Accessinsert(login); //nfc값 조회
+      String nfc = insertService.Accessinsert(login); //등록 및 nfc 값 조회
         setnfcs(nfc);   //nfc값 셋팅
         return "redirect:access";
     }

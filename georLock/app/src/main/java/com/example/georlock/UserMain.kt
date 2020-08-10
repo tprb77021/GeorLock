@@ -41,6 +41,7 @@ class UserMain : AppCompatActivity() {
             val intent = Intent(this, Login::class.java)
             startActivity(intent)
         }
+
         //버튼 클릭시 관리자에게 개폐요청 알림 전송
         opencall.setOnClickListener {
             Toast.makeText(this, "문이 열림 요청함.", Toast.LENGTH_SHORT).show()
@@ -57,15 +58,13 @@ class UserMain : AppCompatActivity() {
 
     //사용자의 개폐요청 알림
     fun opencall(empNo:String):String{
-
         val url = URL("${Static.server_url}/opencall?empNo=${empNo}")
-
         val txt = url.readText()
-        /*val arr = JSONArray(txt)
-        var item = arr*/
         return "${txt}"
-
     }
+
+
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {

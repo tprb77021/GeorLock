@@ -29,7 +29,6 @@ public class AndroidPushNotificationService {
 
         RestTemplate restTemplate = new RestTemplate();
 
-
         /*요청을 보낼 때마다 헤더를 설정하지 않으려면 RestTemplate에
          * 인터셉터 "ClientHttpRequestInterceptor"를 설정할 수 있습니다.*/
         ArrayList<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();

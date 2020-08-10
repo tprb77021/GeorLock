@@ -100,8 +100,8 @@ a {
 
 .search {
     margin-top: 40px;
-    margin-left: 50%;
-    width: 700px;
+    margin-left: 60%;
+    width: 500px;
 }
 
 
@@ -199,5 +199,9 @@ table thead th {
         margin-bottom: 0;
     }
 
-
+    .logoImg img {
+        margin-top: 10px;
+        width: 40%;
+        height: 50px;
+    }
 }

@@ -5,6 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<link rel = "shortcut icon" href="/asset/images/favicon.ico" type="images/x-icon"/>
 	<link rel="stylesheet" href="/asset/css/access.css"/>
 	<title>출입권한설정</title>
 	<script
@@ -17,7 +18,7 @@
 	<header>
 		<div class="logoImg">
 			<a href="record" title="record">
-				<img src="/asset/images/georlocklogo.png">
+				<img src="/asset/images/georlocklogo.png" >
 			</a>
 		</div>
 <%--로그아웃--%>

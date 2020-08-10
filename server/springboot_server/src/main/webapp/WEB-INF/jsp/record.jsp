@@ -5,6 +5,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
+	<link rel = "shortcut icon" href="/asset/images/favicon.ico" type="images/x-icon"/>
 	<link rel="stylesheet" href="/asset/css/record.css"/>
 	<title>출입기록</title>
 	<script

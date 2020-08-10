@@ -210,7 +210,11 @@ button .modify {
         margin-top: 0;
         margin-bottom: 0;
     }
-
+    .logoImg img {
+        margin-top: 10px;
+        width: 40%;
+        height: 50px;
+    }
 
 
 }

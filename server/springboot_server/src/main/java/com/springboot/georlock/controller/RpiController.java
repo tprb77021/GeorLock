@@ -28,9 +28,4 @@ public class RpiController {
     public void resetnfc() throws Exception{
         loginService.setnfc("0");   //nfc 값 초기화
     }
-
-
-
-
-
 }

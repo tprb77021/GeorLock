@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+    <link rel = "shortcut icon" href="/asset/images/favicon.ico" type="images/x-icon"/>
 <link rel="stylesheet" href="/asset/css/login.css"/>
     <style>
         html {
