@@ -7,6 +7,10 @@
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="/asset/css/access.css"/>
 	<title>출입권한설정</title>
+	<script
+			src="https://kit.fontawesome.com/a962b14940.js"
+			crossorigin="anonymous"
+	></script>
 </head>
 <body>
 <%--header--%>
@@ -25,6 +29,27 @@
 	</header>
 
 	<div id="main" >
+		<nav>
+			<div class="nav-item">
+				<ul>
+					<li>
+						<a href="record" title="record">
+							<span>출입기록</span>
+						</a>
+					</li>
+					<li>
+						<a href="insert_btn" title="insert">
+							<span>출입권한등록</span>
+						</a>
+					</li>
+					<li>
+						<a href="access"title="access">
+							<span>출입권한설정</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
 		<article class="main-item">
 			<p class="mainComment">출입권한설정</p>
 
@@ -86,30 +111,11 @@
 
 
 			</table>
+			<a class="upscroll" href="#" title="맨 위로"><i class="fas fa-angle-double-up" fa-sm></i></a>
 		</article>
 
 <%--navside--%>
-		<nav>
-			<div class="nav-item">
-				<ul>
-					<li>
-						<a href="record" title="record">
-							<span>출입기록</span>
-						</a>
-					</li>
-					<li>
-						<a href="insert_btn" title="insert">
-							<span>출입권한등록</span>
-						</a>
-					</li>
-					<li>
-						<a href="access"title="access">
-							<span>출입권한설정</span>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</nav>
+
 	</div>
 
 <script type="text/javascript">

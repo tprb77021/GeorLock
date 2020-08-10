@@ -180,4 +180,36 @@ button .modify {
     font-size: 15px;
 }
 
+@media screen and (max-width: 768px) {
+    #main {
+        display: block;
+    }
 
+    .main-item {
+        margin-top: 0px;
+    }
+    .search {
+        width: 100%;
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .nav-item {
+        margin-top: 0;
+    }
+    nav {
+        margin-top: 0;
+    }
+    .nav-item ul li a {
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    .upscroll i{
+        display: scroll;
+        position:fixed;
+        bottom:20px;
+        right:20px;
+        color: #2497f4;
+    }
+
+}
