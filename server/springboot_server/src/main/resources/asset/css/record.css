@@ -101,11 +101,10 @@ a {
 .search {
     margin-top: 40px;
     margin-left: 50%;
-    width: 700px;
+    width: 300px;
 }
 
-.search input {
-}
+
 
 .search input[type="date"] {
     height: 30px;
