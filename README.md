@@ -16,6 +16,7 @@
 #개발환경
 
 -Web
+    
     * SERVER : TOMCAT 9.0
     
     * DATABASE : MariaDB 10.4.8(AWS EC2 RDS생성)
