@@ -12,13 +12,25 @@
 3. 외부손님 방문 시 원격 개페
 
 ## 개발환경
-
-* SERVER : TOMCAT 9.0
-* DATABASE : MariaDB
-* Language & Framework : java, Spring, mybatis
-
+#개발환경
+-Web
+    * SERVER : TOMCAT 9.0
+    * DATABASE : MariaDB 10.4.8(AWS EC2 RDS생성)
+    * IDE : Intellij(Ultimate Version)
+    * Language & Framework : java, Spring, mybatis
+    * FrontEnd : Javascript, HTML5, CSS3
+    * Language & Framework : Java 8, Spring boot 2.3.1
+-App
+    * Language & Framework : Kotlin , Android Studio, minSdkVersion 22)         
+    * Git(2.27.0) & Sourcetree
+    * 라즈베리파이 Model 3 B
 ## 사용한 기술셋
 ### RPI
+* Python
+__NFC 태깅 출입__
+
+__NFC 등록(쓰기)__
+
 ### Android
 __로그인 화면__
 등록된 사원번호, 비밀번호 입력시 서버에 값 전송 후 회신 값과 비교하여 성공, 실패 
