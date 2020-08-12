@@ -1,4 +1,5 @@
 package com.springboot.georlock.svc;
+
 import com.springboot.georlock.config.HeaderRequestInterceptor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.client.ClientHttpRequestInterceptor;
@@ -19,10 +20,10 @@ import java.util.concurrent.CompletableFuture;
 public class AndroidPushNotificationService {
 
     /*firebase에서 복사한 서버키*/
-    private static final String firebase_server_key="AAAAxMM9LDw:APA91bGmNtrDJFtj3u0ldlcz74MgyauMlc6P9G6S_nEa1WL3YSxLmbs5nxhNnYkA8Q2mJ-Rkx4D8rUbPVQZB49_2Ypq9gn6vSasQmdCNq_iL61D0opnjsY2y8-oQd7AycbEMa1lwCUHW";
+    private static final String firebase_server_key = "AAAAxMM9LDw:APA91bGmNtrDJFtj3u0ldlcz74MgyauMlc6P9G6S_nEa1WL3YSxLmbs5nxhNnYkA8Q2mJ-Rkx4D8rUbPVQZB49_2Ypq9gn6vSasQmdCNq_iL61D0opnjsY2y8-oQd7AycbEMa1lwCUHW";
 
     /*FCM HTTP를 호출하는 URL*/
-    private static final String firebase_api_url="https://fcm.googleapis.com/fcm/send";
+    private static final String firebase_api_url = "https://fcm.googleapis.com/fcm/send";
 
     @Async
     public CompletableFuture<String> send(HttpEntity<String> entity) {
@@ -33,7 +34,7 @@ public class AndroidPushNotificationService {
          * 인터셉터 "ClientHttpRequestInterceptor"를 설정할 수 있습니다.*/
         ArrayList<ClientHttpRequestInterceptor> interceptors = new ArrayList<>();
 
-        interceptors.add(new HeaderRequestInterceptor("Authorization",  "key=" + firebase_server_key));
+        interceptors.add(new HeaderRequestInterceptor("Authorization", "key=" + firebase_server_key));
         interceptors.add(new HeaderRequestInterceptor("Content-Type", "application/json; UTF-8"));
         restTemplate.setInterceptors(interceptors);
 

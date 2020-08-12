@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_info.username
 import java.net.HttpURLConnection
 import java.net.URL
 
-class Accessmodify: AppCompatActivity() {
+class Accessmodify : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
@@ -47,7 +47,7 @@ class Accessmodify: AppCompatActivity() {
         button_update.setOnClickListener {
             Log.i("testLog", "loginclick u:${username.text}")
             Thread() {
-                onUpdateAccess("${empNum.text}","${intime.text}","${outtime.text}")
+                onUpdateAccess("${empNum.text}", "${intime.text}", "${outtime.text}")
                 runOnUiThread {
                     val intent = Intent(this, AuthorizationList::class.java)
                     startActivity(intent)
@@ -65,7 +65,8 @@ class Accessmodify: AppCompatActivity() {
 
     //회원정보 수정
     fun onUpdateAccess(empNo: String, intime: String, outtime: String) {
-        val url = URL("${Static.server_url}/update?empNo=${empNo}&intime=${intime}&outtime=${outtime}")
+        val url =
+            URL("${Static.server_url}/update?empNo=${empNo}&intime=${intime}&outtime=${outtime}")
         val txt = url.readText()
     }
 

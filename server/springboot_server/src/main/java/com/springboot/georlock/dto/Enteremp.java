@@ -8,7 +8,7 @@ import lombok.ToString;
 @Setter
 @ToString
 public class Enteremp {
-    private String intime ;
+    private String intime;
     private String username;
-    private  String empNo ;
+    private String empNo;
 }

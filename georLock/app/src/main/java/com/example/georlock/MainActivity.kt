@@ -18,7 +18,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 class MainActivity : AppCompatActivity() {
-    lateinit var Butts:Button;
+    lateinit var Butts: Button;
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -26,13 +26,13 @@ class MainActivity : AppCompatActivity() {
 
         // 버튼 클릭시 문 개폐 여부에 따른 버튼 색상 변경
         // 닫힌 상태 - Red, 클릭 후 문 개방시 Green으로 변경
-        val DOOR_CLOSE="0" //문이 닫힌 상태
+        val DOOR_CLOSE = "0" //문이 닫힌 상태
         Thread() {
             var doors: String = getDoor()
             runOnUiThread {
-                if(doors.equals(DOOR_CLOSE)){
+                if (doors.equals(DOOR_CLOSE)) {
                     open.setBackgroundColor(Color.RED)
-                }else{
+                } else {
                     open.setBackgroundColor(Color.GREEN)
                 }
             }
@@ -63,19 +63,19 @@ class MainActivity : AppCompatActivity() {
         open.setOnClickListener {
             Toast.makeText(this, "문이 열렸습니다.", Toast.LENGTH_SHORT).show()
             Thread() {
-                var  temp =""
-                if(intent.hasExtra("infos")){
+                var temp = ""
+                if (intent.hasExtra("infos")) {
                     temp = intent.getStringExtra("infos").toString()
                 }
-                var list: String = setOpen( "${temp}")
-                Log.i("testlog",list)
+                var list: String = setOpen("${temp}")
+                Log.i("testlog", list)
             }.start()
         }
 
     }
 
     // 출입문 개폐
-    fun setOpen(empNo: String): String{
+    fun setOpen(empNo: String): String {
         val url = URL("${Static.server_url}/open?empNo=${empNo}")
         val txt = url.readText()
         return "${txt}"
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     // 문 현재 상태 확인
-    fun getDoor(): String{
+    fun getDoor(): String {
         val url = URL("${Static.server_url}/door")
         val txt = url.readText()
         return "${txt}"

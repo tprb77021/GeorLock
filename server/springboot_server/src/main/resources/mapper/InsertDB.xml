@@ -5,7 +5,6 @@
 <mapper namespace="com.springboot.georlock.mapper.InsertMapper">
 
 
-
     <select id="emplist"
             resultType="com.springboot.georlock.dto.Login">
         select A.*
@@ -14,7 +13,7 @@
 
     </select>
 
-    <insert id="insert" parameterType ="com.springboot.georlock.dto.Login">
+    <insert id="insert" parameterType="com.springboot.georlock.dto.Login">
         INSERT INTO users(empNo,username,userPw,intime,outtime,usertype,token,nfc) VALUES(#{empNo},#{username},#{userPw},#{intime},#{outtime},#{usertype},#{token},#{nfc});
     </insert>
 
@@ -22,7 +21,6 @@
             resultType="com.springboot.georlock.dto.Login">
         SELECT t.* from ( select A.* from empusers A left outer join users B on A.empNo=B.empNo where B.EMPNO is NULL ) t where empNo LIKE  #{textSearch} or username LIKE #{textSearch}
             </select>
-
 
 
 </mapper>

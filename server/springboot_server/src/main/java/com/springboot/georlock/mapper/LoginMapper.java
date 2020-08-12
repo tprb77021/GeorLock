@@ -6,7 +6,7 @@ import org.json.JSONException;
 
 
 public interface LoginMapper {
-    public  Login getToken(String empNo) ;
+    public Login getToken(String empNo);
 
     public Login Login(Login login) throws Exception;
 

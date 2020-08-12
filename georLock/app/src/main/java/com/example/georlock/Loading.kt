@@ -14,13 +14,13 @@ class Loading : AppCompatActivity() {
         var intent = Intent(this, Login::class.java)
         setContentView(R.layout.activity_loading)
         FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener(OnCompleteListener { task ->
-            if(!task.isSuccessful){
+            if (!task.isSuccessful) {
                 Log.i("testLog", "getInstanceId failed")
                 return@OnCompleteListener
             }
             Log.i("testLog", "getInstanceId")
             var token = task.result?.token!!
-            intent.putExtra("token","$token")
+            intent.putExtra("token", "$token")
             Log.i("testLog", "tokenssss : $token")
         })
         val handler = Handler()

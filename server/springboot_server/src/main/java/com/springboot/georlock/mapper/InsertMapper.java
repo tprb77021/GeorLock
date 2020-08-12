@@ -5,8 +5,7 @@ import com.springboot.georlock.dto.Login;
 import java.util.List;
 
 public interface InsertMapper {
-
-    public  void insert(Login login) throws Exception;
+    public void insert(Login login) throws Exception;
 
     public List<Login> emplist() throws Exception;
 

@@ -1,21 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Document</title>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto&display=swap");
+
         header .headerDiv {
             width: 80%;
             padding: 2px;
             margin-top: 20px;
         }
+
         header p {
             font-size: 30px;
         }
+
         .headerDiv p {
             margin-left: 25px;
             font-family: "Noto Sans KR", sans-serif;
@@ -50,6 +53,7 @@
         body {
             font-family: "Noto Sans KR", sans-serif;
         }
+
         input[type="submit"] {
             width: 100%;
 
@@ -113,12 +117,12 @@
         <div class="jsp-div">${username}</div>
         출입가능시간:
         <div class="input-div">
-            <input type="time" name="intime" />
-            <input type="time" name="outtime" />
+            <input type="time" name="intime"/>
+            <input type="time" name="outtime"/>
         </div>
 
-        <input type="hidden" name="empNo" value="${empNo}" />
-        <input type="submit" value="수정"  />
+        <input type="hidden" name="empNo" value="${empNo}"/>
+        <input type="submit" value="수정"/>
     </form>
 </main>
 </body>

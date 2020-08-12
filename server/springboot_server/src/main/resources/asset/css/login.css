@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Roboto&display=swap');
+
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -11,20 +12,19 @@ body {
 }
 
 
-
 .form {
-    position:relative;
+    position: relative;
     max-width: 360px;
     margin: 0 auto 100px;
     padding: 45px;
     text-align: center;
 
 }
-.form img{
+
+.form img {
     width: 100%;
     margin-bottom: 30px;
 }
-
 
 
 .form input[type=text],
@@ -38,6 +38,7 @@ body {
     box-sizing: border-box;
     font-size: 14px;
 }
+
 .form button {
 
     text-transform: uppercase;
@@ -50,13 +51,13 @@ body {
     font-size: 14px;
     cursor: pointer;
 }
-.form button:hover{
+
+.form button:hover {
     background: #07334c;
 }
 
 
-
-.checkbox{
+.checkbox {
     float: left;
     margin-bottom: 10px;
     font-family: 'Noto Sans KR', sans-serif;
@@ -66,7 +67,7 @@ body {
 @media screen and (max-width: 768px) {
 
     .login-page {
-        width:80%;
+        width: 80%;
         padding: 8% 0 0;
         margin: auto;
     }

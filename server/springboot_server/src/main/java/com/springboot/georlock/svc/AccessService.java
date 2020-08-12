@@ -6,6 +6,7 @@ import com.springboot.georlock.mapper.AccessMapper;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 @Slf4j
@@ -14,28 +15,23 @@ public class AccessService {
 
     @Autowired
     AccessMapper accessMapper;
-    //
-    public List<Login> getAll() throws Exception{
+
+    public List<Login> getAll() throws Exception {
         return accessMapper.getAll();
     }
 
-
-    public void AccessUpdate(Login login) throws Exception {
+    public void accessUpdate(Login login) throws Exception {
         accessMapper.update(login);
     }
 
-    public void Accessdelete(String empNo) throws Exception {
+    public void accessDelete(String empNo) throws Exception {
         accessMapper.delete(empNo);
     }
 
-
-    public List<Login> AccessSearch(String textSearch) throws Exception{
-
-        String Search = "%"+textSearch+"%";
-
-       return accessMapper.Search(Search);
+    public List<Login> accessSearch(String textSearch) throws Exception {
+        String Search = "%" + textSearch + "%";
+        return accessMapper.Search(Search);
     }
-
 
 
 }

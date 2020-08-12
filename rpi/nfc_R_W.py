@@ -11,16 +11,16 @@ GPIO.setup(pin, GPIO.OUT)
 p= GPIO.PWM(pin, 50) 
 p.start(0)
 cnt = 0
-
+SERVER_IP='http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080'
 pn532 = PN532_SPI(debug=False, reset=20, cs=4)
 
 def open():      
     print('open')
-    requests.get('http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080/open?empNo=no')
+    requests.get(SERVER_IP+'/open?empNo=no')
     p.ChangeDutyCycle(12.5) 
     time.sleep(2)
     p.ChangeDutyCycle(2.0)
-    requests.get('http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080/close')
+    requests.get(SERVER_IP+'/close')
     time.sleep(2)
 
 
@@ -36,7 +36,7 @@ while True:
       
       print('Waiting for RFID/NFC card...')
       while True:
-          data2 = requests.get('http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080/door')
+          data2 = requests.get(SERVER_IP'/door')
           if data2.text == '1':
             open()
           # Check if a card is available to read
@@ -47,7 +47,7 @@ while True:
           if uid is not None:
               break
               
-      data2 = requests.get('http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080/insertnfc').text
+      data2 = requests.get(SERVER_IP+'/insertnfc').text
       print('Found card with UID:', [hex(i) for i in uid])
       print(data2)
       
@@ -63,7 +63,7 @@ while True:
         pn532.mifare_classic_write_block(block_number, data)
         if pn532.mifare_classic_read_block(block_number) == data:
           print('write block %d successfully' % block_number)
-          requests.get('http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080/resetnfc')
+          requests.get(SERVER_IP+'/resetnfc')
         
       else : 
         
@@ -82,7 +82,7 @@ while True:
           test = ''.join(['%02X' % x for x in pn532.mifare_classic_read_block(2)])   
           print('test =', test)
           print('====')
-          data = requests.get('http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080/dooropen?cardValue='+test)
+          data = requests.get(SERVER_IP+'/dooropen?cardValue='+test)
           print(data.text)
                   
           if data.text == '1':

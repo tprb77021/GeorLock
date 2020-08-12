@@ -17,10 +17,10 @@ class UserMain : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_main)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
-        var tmp:String?=""
-        if(intent.hasExtra("infos")) {
-            tmp=intent.getStringExtra("infos")
-            val infos:List<String>? =
+        var tmp: String? = ""
+        if (intent.hasExtra("infos")) {
+            tmp = intent.getStringExtra("infos")
+            val infos: List<String>? =
                 tmp?.split("@")
             textView1.setText(infos?.get(0))
             textView3.setText(infos?.get(1))
@@ -45,8 +45,8 @@ class UserMain : AppCompatActivity() {
         opencall.setOnClickListener {
             Toast.makeText(this, "문이 열림 요청함.", Toast.LENGTH_SHORT).show()
             Thread() {
-                val infos:List<String>? = tmp?.split("@")
-                var list: String = onSendOpencall( "${infos?.get(2)}")
+                val infos: List<String>? = tmp?.split("@")
+                var list: String = onSendOpencall("${infos?.get(2)}")
                 Log.i("testLog", "opencall : ${infos?.get(2)} ")
                 runOnUiThread {
                 }
@@ -55,7 +55,7 @@ class UserMain : AppCompatActivity() {
     }
 
     //사용자의 개폐요청
-    fun onSendOpencall(empNo: String): String{
+    fun onSendOpencall(empNo: String): String {
         val url = URL("${Static.server_url}/opencall?empNo=${empNo}")
         val txt = url.readText()
         return "${txt}"

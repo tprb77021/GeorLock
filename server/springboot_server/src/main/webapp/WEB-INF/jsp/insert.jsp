@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel = "shortcut icon" href="/asset/images/favicon.ico" type="images/x-icon"/>
+    <link rel="shortcut icon" href="/asset/images/favicon.ico" type="images/x-icon"/>
     <link rel="stylesheet" href="/asset/css/access.css"/>
     <title>출입권한등록</title>
     <script

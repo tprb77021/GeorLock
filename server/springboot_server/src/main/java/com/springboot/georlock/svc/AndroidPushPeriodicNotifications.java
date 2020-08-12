@@ -6,6 +6,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,17 +21,15 @@ import java.util.List;
 public class AndroidPushPeriodicNotifications {
 
 
-
-    public static String PeriodicNotificationJson(Login tokens,int type,String door) throws JSONException{
+    public static String PeriodicNotificationJson(Login tokens, int type, String door) throws JSONException {
         LocalDate localDate = LocalDate.now();
-        String title= "Georlock!";
-        String bodys = "empNo :"+tokens.getEmpNo()+" open please";
+        String title = "Georlock!";
+        String bodys = "empNo :" + tokens.getEmpNo() + " open please";
         String sampleData[] = {tokens.getToken()};
-        if(type==2){
+        if (type == 2) {
             title = "door";
-            bodys= door+"@"+tokens.getEmpNo();
+            bodys = door + "@" + tokens.getEmpNo();
         }
-
 
         log.debug(bodys);
         JSONObject body = new JSONObject();
@@ -57,9 +56,6 @@ public class AndroidPushPeriodicNotifications {
         notification.put("body", bodys);
 
         body.put("notification", notification);
-
-
-
 
         return body.toString();
     }

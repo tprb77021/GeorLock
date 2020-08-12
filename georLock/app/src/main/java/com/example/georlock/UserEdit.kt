@@ -19,11 +19,11 @@ class UserEdit : AppCompatActivity() {
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
 
         //유저의 정보를 넘겨받음
-        var tmp:String?= ""
-        var infos:List<String>? =null
-        if(intent.hasExtra("infoss")) {
-            tmp=intent.getStringExtra("infoss")
-            infos= tmp?.split("@")
+        var tmp: String? = ""
+        var infos: List<String>? = null
+        if (intent.hasExtra("infoss")) {
+            tmp = intent.getStringExtra("infoss")
+            infos = tmp?.split("@")
         }
 
         //수정 버튼 클릭시 변경된 비밀번호 값을 비교
@@ -33,14 +33,13 @@ class UserEdit : AppCompatActivity() {
             if ("${pwd1.text}".equals("${pwd2.text}")) {
                 Thread() {
                     var list: String =
-                        onUserInfoUpdate( "${infos?.get(2).toString()}",  "${pwd1.text}")
+                        onUserInfoUpdate("${infos?.get(2).toString()}", "${pwd1.text}")
                     runOnUiThread {
                         Log.i("testLog", "loginedededed : ${infos?.get(2).toString()}")
                     }
                 }.start()
                 startActivity(intent)
-            }
-            else {
+            } else {
                 Toast.makeText(this, "비밀번호 확인필요.", Toast.LENGTH_SHORT).show()
             }
         }
@@ -49,7 +48,7 @@ class UserEdit : AppCompatActivity() {
         cancel.setOnClickListener {
             val intent = Intent(this, UserMain::class.java)
             Log.i("testLog", "loginedededed : ${tmp}")
-            intent.putExtra("infos",tmp)
+            intent.putExtra("infos", tmp)
             startActivity(intent)
         }
     }

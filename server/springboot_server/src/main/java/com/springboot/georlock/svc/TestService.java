@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 @Service
 public class TestService {
 
-	@Autowired
-	TestMapper testMapper;
+    @Autowired
+    TestMapper testMapper;
 
-	public List<Login> getAll() throws Exception{
-		return testMapper.getAll();
-	}
+    public List<Login> getAll() throws Exception {
+        return testMapper.getAll();
+    }
 }
