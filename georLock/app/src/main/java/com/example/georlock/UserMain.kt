@@ -18,13 +18,12 @@ class UserMain : AppCompatActivity() {
         setContentView(R.layout.activity_user_main)
         getSupportActionBar()?.setDisplayHomeAsUpEnabled(true);
         var tmp:String?=""
-        if(intent.hasExtra("infos")){
+        if(intent.hasExtra("infos")) {
             tmp=intent.getStringExtra("infos")
             val infos:List<String>? =
                 tmp?.split("@")
             textView1.setText(infos?.get(0))
             textView3.setText(infos?.get(1))
-
         }
 
         //버튼 클릭시 사용자 비밀번호 수정 페이지로 전환
@@ -46,9 +45,8 @@ class UserMain : AppCompatActivity() {
         opencall.setOnClickListener {
             Toast.makeText(this, "문이 열림 요청함.", Toast.LENGTH_SHORT).show()
             Thread() {
-                val infos:List<String>? =
-                    tmp?.split("@")
-                var list: String = opencall( "${infos?.get(2)}")
+                val infos:List<String>? = tmp?.split("@")
+                var list: String = onSendOpencall( "${infos?.get(2)}")
                 Log.i("testLog", "opencall : ${infos?.get(2)} ")
                 runOnUiThread {
                 }
@@ -56,14 +54,12 @@ class UserMain : AppCompatActivity() {
         }
     }
 
-    //사용자의 개폐요청 알림
-    fun opencall(empNo:String):String{
+    //사용자의 개폐요청
+    fun onSendOpencall(empNo: String): String{
         val url = URL("${Static.server_url}/opencall?empNo=${empNo}")
         val txt = url.readText()
         return "${txt}"
     }
-
-
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {

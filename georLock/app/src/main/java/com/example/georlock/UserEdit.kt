@@ -21,7 +21,7 @@ class UserEdit : AppCompatActivity() {
         //유저의 정보를 넘겨받음
         var tmp:String?= ""
         var infos:List<String>? =null
-        if(intent.hasExtra("infoss")){
+        if(intent.hasExtra("infoss")) {
             tmp=intent.getStringExtra("infoss")
             infos= tmp?.split("@")
         }
@@ -30,12 +30,10 @@ class UserEdit : AppCompatActivity() {
         //수정된 내용 서버로 전송 후 UserMain Page로 전환
         request_ckeck.setOnClickListener {
             val intent = Intent(this, Login::class.java)
-
-            if ("${pwd1.text.toString()}".equals("${pwd2.text.toString()}")) {
+            if ("${pwd1.text}".equals("${pwd2.text}")) {
                 Thread() {
-
                     var list: String =
-                        UpdateMainLog( "${infos?.get(2).toString()}",  "${pwd1.text.toString()}")
+                        onUserInfoUpdate( "${infos?.get(2).toString()}",  "${pwd1.text}")
                     runOnUiThread {
                         Log.i("testLog", "loginedededed : ${infos?.get(2).toString()}")
                     }
@@ -57,15 +55,12 @@ class UserEdit : AppCompatActivity() {
     }
 
     //사용자의 정보 수정
-    fun UpdateMainLog(empNo:String,userPw:String):String{
+    fun onUserInfoUpdate(empNo: String, userPw: String): String {
         val url = URL("${Static.server_url}/userupdate?empNo=${empNo}&userPw=${userPw}")
-
         val txt = url.readText()
-        /*val arr = JSONArray(txt)
-        var item = arr*/
         return "${txt}"
-
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.getItemId()) {
             android.R.id.home -> {

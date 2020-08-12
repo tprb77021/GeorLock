@@ -13,7 +13,6 @@ class Loading : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         var intent = Intent(this, Login::class.java)
         setContentView(R.layout.activity_loading)
-
         FirebaseInstanceId.getInstance().instanceId.addOnCompleteListener(OnCompleteListener { task ->
             if(!task.isSuccessful){
                 Log.i("testLog", "getInstanceId failed")

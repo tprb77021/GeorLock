@@ -22,18 +22,20 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
     override fun onMessageReceived(remoteMessage : RemoteMessage) {
         super.onMessageReceived(remoteMessage)
+        val PUSH_TITLE_CALL="Georlokc!"
+        val PUSH_TITLE_OPNE="door!"
         Log.i("testLog", "message received")
         Log.i("testLog", "${remoteMessage.messageType}")
-        if(remoteMessage.data.size > 0){
+        if(remoteMessage.data.size > 0) {
             Log.i("testLog", "msg data : ${remoteMessage.data}")
-
-            if(true){
-            } else{
+            if(true) {
+            }
+            else {
                 handleNow();
             }
 
-            if(remoteMessage.notification != null){
-                if("${remoteMessage.notification!!.title}".equals("Georlokc!")) {
+            if(remoteMessage.notification != null) {
+                if("${remoteMessage.notification!!.title}".equals(PUSH_TITLE_CALL)) {
                     Log.i(
                         "testLog",
                         "백msg notificationn Title : ${remoteMessage.notification!!.title}"
@@ -43,16 +45,16 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
                         "msg notificationn body : ${remoteMessage.notification!!.body}"
                     )
                 }
-
             }
         }
-        else{
-            if("${remoteMessage.notification!!.title}".equals("Georlokc!")){
+        else {
+            if("${remoteMessage.notification!!.title}".equals(PUSH_TITLE_CALL)) {
                 Log.i("testLog", "size?")
                 Log.i("testLog", "포msg notificationn Title : ${remoteMessage.notification!!.title}")
                 Log.i("testLog", "msg notificationn body : ${remoteMessage.notification!!.body}")
                 sendNotification(" ${remoteMessage.notification!!.title}","${remoteMessage.notification!!.body}")
-            }else if("${remoteMessage.notification!!.title}".equals("door")){
+            }
+            else if("${remoteMessage.notification!!.title}".equals(PUSH_TITLE_OPNE)) {
                 var tmps:List<String> =  "${remoteMessage.notification!!.body}".split("@");
                 Log.i("testLog", "kl${remoteMessage.notification!!.body}")
                 val intent = Intent(this, MainActivity::class.java)

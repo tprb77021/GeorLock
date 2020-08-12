@@ -1,25 +1,19 @@
 package com.springboot.georlock.svc;
 
 
-import com.springboot.georlock.controller.AndroidController;
 import com.springboot.georlock.dto.Login;
 import com.springboot.georlock.mapper.LoginMapper;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletResponse;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.concurrent.CompletableFuture;
-import java.util.concurrent.ExecutionException;
+
 
 @Slf4j
 @Service

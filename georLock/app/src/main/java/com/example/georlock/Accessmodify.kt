@@ -12,7 +12,7 @@ import kotlinx.android.synthetic.main.activity_info.username
 import java.net.HttpURLConnection
 import java.net.URL
 
-class Accessmodify : AppCompatActivity() {
+class Accessmodify: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_info)
@@ -33,10 +33,9 @@ class Accessmodify : AppCompatActivity() {
 
         //삭제버튼 클릭시 회원정보 삭제 후 출입권한 페이지로 전환됨
         button_delete.setOnClickListener {
-
             Log.i("testLog", "loginclick u:${username.text}")
             Thread() {
-                deleteMainLog("${infos?.get(2)}")
+                onDeleteAccess("${infos?.get(2)}")
                 runOnUiThread {
                     val intent = Intent(this, AuthorizationList::class.java)
                     startActivity(intent)
@@ -46,10 +45,9 @@ class Accessmodify : AppCompatActivity() {
 
         //수정버튼 클릭시 수정된 내용을 저장한 후 출입권한 페이지로 전환됨
         button_update.setOnClickListener {
-
             Log.i("testLog", "loginclick u:${username.text}")
             Thread() {
-                UpdateMainLog("${empNum.text}","${intime.text}","${outtime.text}")
+                onUpdateAccess("${empNum.text}","${intime.text}","${outtime.text}")
                 runOnUiThread {
                     val intent = Intent(this, AuthorizationList::class.java)
                     startActivity(intent)
@@ -59,24 +57,16 @@ class Accessmodify : AppCompatActivity() {
     }
 
     //회원정보 삭제
-    fun deleteMainLog(empNo: String) {
+    fun onDeleteAccess(empNo: String) {
         val url = URL("${Static.server_url}/delete?empNo=${empNo}")
         val conn = url.openConnection() as HttpURLConnection // casting
-
         val txt = url.readText()
-        /*val arr = JSONArray(txt)
-    var item = arr*/
-
     }
 
     //회원정보 수정
-    fun UpdateMainLog(empNo: String,intime: String,outtime:String) {
+    fun onUpdateAccess(empNo: String, intime: String, outtime: String) {
         val url = URL("${Static.server_url}/update?empNo=${empNo}&intime=${intime}&outtime=${outtime}")
-
         val txt = url.readText()
-        /*val arr = JSONArray(txt)
-    var item = arr*/
-
     }
 
     //toolbar의 back키 눌렀을 때 동작

@@ -23,16 +23,16 @@ public class AndroidPushPeriodicNotifications {
 
     public static String PeriodicNotificationJson(Login tokens,int type,String door) throws JSONException{
         LocalDate localDate = LocalDate.now();
-        String name = "empNo :"+tokens.getEmpNo()+" open please";
         String title= "Georlock!";
+        String bodys = "empNo :"+tokens.getEmpNo()+" open please";
         String sampleData[] = {tokens.getToken()};
         if(type==2){
             title = "door";
-            name= door+"@"+tokens.getEmpNo();
+            bodys= door+"@"+tokens.getEmpNo();
         }
 
 
-        log.debug(name);
+        log.debug(bodys);
         JSONObject body = new JSONObject();
 
         List<String> tokenlist = new ArrayList<String>();  //<~>는 <String>값이 생략
@@ -54,7 +54,7 @@ public class AndroidPushPeriodicNotifications {
         //title : 알림의 제목
         notification.put("title", title);
         //body : 알림의 내용
-        notification.put("body", name);
+        notification.put("body", bodys);
 
         body.put("notification", notification);
 
