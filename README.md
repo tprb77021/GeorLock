@@ -3,6 +3,7 @@
  개인에게 입력된 시간동안에 원격개폐 기능과 개폐기록을 DB에 저장하여 언제 문이 열렸는지 
  실시간 확인이 가능함과 근무 및 정해진 시간 외의 출입을 제어함 그리고 관리자의 원격 제어로 
  필요시 출입 or 퇴실을 관리함으로써 보안을 강화할 수 있다. 
+ 
  주소 : http://ec2-3-35-8-128.ap-northeast-2.compute.amazonaws.com:8080
 ## EndUser 입장에서 보는 핵심 기능
 1. 출입 요청 시 관리자에게 PUSH알림
@@ -15,18 +16,28 @@
 #개발환경
 -Web
     * SERVER : TOMCAT 9.0
+    
     * DATABASE : MariaDB 10.4.8(AWS EC2 RDS생성)
+    
     * IDE : Intellij(Ultimate Version)
+    
     * Language & Framework : java, Spring, mybatis
+    
     * FrontEnd : Javascript, HTML5, CSS3
+    
     * Language & Framework : Java 8, Spring boot 2.3.1
+    
 -App
-    * Language & Framework : Kotlin , Android Studio, minSdkVersion 22)         
+    * Language & Framework : Kotlin , Android Studio, minSdkVersion 22)     
+    
     * Git(2.27.0) & Sourcetree
+    
     * 라즈베리파이 Model 3 B
 ## 사용한 기술셋
 ### RPI
+
 * Python
+
 __NFC 태깅 출입__
 
 __NFC 등록(쓰기)__
