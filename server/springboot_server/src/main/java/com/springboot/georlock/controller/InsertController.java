@@ -19,7 +19,7 @@ public class InsertController {
     LoginService loginService;
 
     @RequestMapping("/insert_btn")      //등록 페이지 이동
-    public ModelAndView insertform() throws Exception {
+    public ModelAndView insertForm() throws Exception {
         ModelAndView mav = new ModelAndView("insert");
         mav.addObject("empuser", insertService.empList());  //등록 되지 않은 회원 정보 조회
         return mav;
@@ -32,16 +32,15 @@ public class InsertController {
         return mav;
     }
 
-    @RequestMapping("/accessinsert")      //등록 및 nfc 값 조회
-    public String accessinsert(Login login) throws Exception {
+    @RequestMapping("/accessInsert")      //등록 및 nfc 값 조회
+    public String accessInsert(Login login) throws Exception {
         String nfc = insertService.accessInsert(login); //등록 및 nfc 값 조회
-        setnfcs(nfc);   //nfc값 셋팅
+        setNfc(nfc);   //nfc값 셋팅
         return "redirect:access";
     }
 
-
     //nfc 등록을 위한 메소드
-    public void setnfcs(String nfc) throws Exception {
+    public void setNfc(String nfc) throws Exception {
         loginService.setNfc(nfc); //nfc값 셋팅
     }
 }

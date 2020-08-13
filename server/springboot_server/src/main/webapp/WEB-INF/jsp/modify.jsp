@@ -108,7 +108,7 @@
     <form
             class="modify-form"
             name="modify"
-            action="accessupdate"
+            action="accessUpdate"
             method="post"
     >
         사번 :

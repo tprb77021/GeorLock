@@ -37,14 +37,14 @@ public class AccessController {
     }
 
 
-    @RequestMapping("/accessdelete")      //회원 정보(출입 권한) 삭제 기능
-    public String accessdelete(@RequestParam String empNo) throws Exception {
+    @RequestMapping("/accessDelete")      //회원 정보(출입 권한) 삭제 기능
+    public String accessDelete(@RequestParam String empNo) throws Exception {
         accessService.accessDelete(empNo);  //회원 정보 삭제
         return "redirect:access";
     }
 
 
-    @RequestMapping("/accessmodity")     //출입 시간 수정 페이지 이동
+    @RequestMapping("/accessModity")     //출입 시간 수정 페이지 이동
     public ModelAndView accessModity(@RequestParam String empNo, @RequestParam String username) throws Exception {
         ModelAndView mav = new ModelAndView("modify");
         mav.addObject("empNo", empNo);
@@ -52,7 +52,7 @@ public class AccessController {
         return mav;
     }
 
-    @RequestMapping("/accessupdate")     //출입 시간 수정 기능
+    @RequestMapping("/accessUpdate")     //출입 시간 수정 기능
     public String accessUpdate(Login login) throws Exception {
         accessService.accessUpdate(login);  //회원 정보 수정
         return "close";

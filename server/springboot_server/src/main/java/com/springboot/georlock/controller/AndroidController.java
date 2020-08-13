@@ -103,9 +103,9 @@ public class AndroidController {
         loginService.userUpdate(empNo, userPw);  //개인정보 수정 실행
     }
 
-    @GetMapping("/door")  //문 상태 확인
-    public String Door() throws Exception {
-        return loginService.getdoor();  //현재 문상태 전송
+    @GetMapping("/getDoor")  //문 상태 확인
+    public String getDoor() throws Exception {
+        return loginService.getDoor();  //현재 문상태 전송
     }
 
 
@@ -154,7 +154,7 @@ public class AndroidController {
     public ResponseEntity<String> send() throws JSONException, InterruptedException {
         Login token = loginService.getToken(ADMIN_EMPNO);
         String notifications =
-                AndroidPushPeriodicNotifications.PeriodicNotificationJson(token, 2, loginService.getdoor());
+                AndroidPushPeriodicNotifications.PeriodicNotificationJson(token, 2, loginService.getDoor());
         HttpEntity<String> request = new HttpEntity<>(notifications);
         CompletableFuture<String> pushNotification =
                 androidPushNotificationService.send(request);

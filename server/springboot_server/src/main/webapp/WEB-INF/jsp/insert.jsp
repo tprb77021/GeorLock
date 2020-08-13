@@ -98,7 +98,7 @@
                     <td>
                         <div class="btn-group">
                             <button type="button" id="modity_btn" >
-                                <p class="modify"><a href=/accessinsert?empNo=${list.empNo}&username=${list.username}>등록</a></p>
+                                <p class="modify"><a href=/accessInsert?empNo=${list.empNo}&username=${list.username}>등록</a></p>
                             </button>
                         </div>
                     </td>

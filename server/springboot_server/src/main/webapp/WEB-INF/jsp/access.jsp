@@ -101,7 +101,7 @@
                     <td>
                         <div class="btn-group">
                             <button type="button" id="modity_btn"
-                                    onClick="window.open('/accessmodity?empNo=${list.empNo}&username=${list.username}',
+                                    onClick="window.open('/accessModity?empNo=${list.empNo}&username=${list.username}',
                                             '_blank', 'width=500px,height=450px,toolbars=no,scrollbars=no'); return false;">
                                 <p class="modify">수정</p>
                             </button>
@@ -126,7 +126,7 @@
     function view_confirm(empNo) {
         var ans = confirm("삭제 하시겠습니까?");
         if (ans) {
-            location.href = "/accessdelete?empNo=" + empNo;
+            location.href = "/accessDelete?empNo=" + empNo;
         }
     }
 </script>

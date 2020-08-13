@@ -18,18 +18,20 @@ public class LoginController {
     //로그인 컨트롤러
     @Autowired
     LoginService loginService;
+    final String EMPNO="empNo";
+    final String USERPW="userPw";
 
     @RequestMapping("/")    // 로그인 페이지 이동
-    public String loginform(HttpServletRequest request) throws Exception {
+    public String loginForm(HttpServletRequest request) throws Exception {
         Cookie[] cookies = request.getCookies();    // 쿠키 확인
         String page = "login";
         if (cookies != null) {      //쿠키가 있으면 실행
             String empNo = "";
             String userPw = "";
             for (int i = 0; i < cookies.length; i++) {
-                if (cookies[i].getName().equals("empNo")) {
+                if (cookies[i].getName().equals(EMPNO)) {
                     empNo = cookies[i].getValue();
-                } else if (cookies[i].getName().equals("userPw")) {
+                } else if (cookies[i].getName().equals(USERPW)) {
                     userPw = cookies[i].getValue();
                 }
             }

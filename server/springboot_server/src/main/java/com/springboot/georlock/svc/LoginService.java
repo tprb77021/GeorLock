@@ -70,7 +70,7 @@ public class LoginService {
         loginMapper.updateToken(login);
     }
 
-    public String getdoor() {   // 현재 개폐 상태 조회
+    public String getDoor() {   // 현재 개폐 상태 조회
         return loginMapper.getdoor().getDoor();
     }
 

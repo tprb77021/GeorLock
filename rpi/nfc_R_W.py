@@ -36,7 +36,7 @@ while True:
       
       print('Waiting for RFID/NFC card...')
       while True:
-          data2 = requests.get(SERVER_IP'/door')
+          data2 = requests.get(SERVER_IP+'/door')
           if data2.text == '1':
             open()
           # Check if a card is available to read
@@ -47,7 +47,7 @@ while True:
           if uid is not None:
               break
               
-      data2 = requests.get(SERVER_IP+'/insertnfc').text
+      data2 = requests.get(SERVER_IP+'/insertNfc').text
       print('Found card with UID:', [hex(i) for i in uid])
       print(data2)
       
@@ -63,7 +63,7 @@ while True:
         pn532.mifare_classic_write_block(block_number, data)
         if pn532.mifare_classic_read_block(block_number) == data:
           print('write block %d successfully' % block_number)
-          requests.get(SERVER_IP+'/resetnfc')
+          requests.get(SERVER_IP+'/resetNfc')
         
       else : 
         
@@ -73,16 +73,16 @@ while True:
           print('.', end="")
                   # Try again if no card is available.
           cardValue = ''
-          test=''
+          NFCdata=''
           for i in uid:
                   cardValue = cardValue + str(i)
           print('cardValue=', cardValue)
           pn532.mifare_classic_authenticate_block(
           uid, block_number=2, key_number=nfc.MIFARE_CMD_AUTH_A, key=key_a)
-          test = ''.join(['%02X' % x for x in pn532.mifare_classic_read_block(2)])   
-          print('test =', test)
+          NFCdata = ''.join(['%02X' % x for x in pn532.mifare_classic_read_block(2)])   
+          print('test =', NFCdata)
           print('====')
-          data = requests.get(SERVER_IP+'/dooropen?cardValue='+test)
+          data = requests.get(SERVER_IP+'/doorOpen?NFCdata='+NFCdata)
           print(data.text)
                   
           if data.text == '1':
